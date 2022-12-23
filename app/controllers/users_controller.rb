@@ -12,6 +12,12 @@ class UsersController < ApplicationController
         render json: users, status: :ok
     end
 
+    # SHOW /me
+    def show
+        user = User.find_by(id: sessions[:user_id])
+        render :json user, status: :ok
+    end
+
 
     private
 
