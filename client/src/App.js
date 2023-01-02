@@ -8,6 +8,7 @@ function App() {
 
   const [errors, setErrors] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
+  const [displayForms, setDisplayForms ] = useState(false)
 
 
   //STAY LOGGED IN:
@@ -36,6 +37,10 @@ function App() {
     })
   }
 
+  const handleDisplayForm = ()=> {
+    setDisplayForms(!displayForms)
+}
+
 
 return (
     <div className="App">
@@ -45,12 +50,15 @@ return (
         currentUser={currentUser}
         setErrors={setErrors} 
         errors={errors} 
-        handleLogOut={handleLogOut}/>
+        handleLogOut={handleLogOut}
+        handleDisplayForm={handleDisplayForm}/>
 
       <h1>SUP {currentUser? currentUser.username : "STRANGER"}</h1>
       <h3> Basic home stuff is here! </h3>
-
       {!currentUser ? <h4>Go fucking login!</h4> : <h4>Oh shit you're logged! Let's redirect you to other components somehow</h4> }
+
+      {displayForms ? <LoginForm setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/> : null }
+
 
 
     </div>

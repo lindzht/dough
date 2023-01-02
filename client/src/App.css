@@ -37,11 +37,26 @@
   }
 } */ 
 
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-color: aliceblue;
+}
+
+#nav h3 {
+  margin-right: 3em;
+}
+
+
 #signup-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 5;
+  margin-top: -100px;
 }
 
 #signup-form form {
@@ -64,6 +79,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 5;
+  margin-top: -100px;
 }
 
 #login-form form {
