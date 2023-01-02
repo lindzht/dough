@@ -12,7 +12,7 @@ function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors}
 
     const handleSignup = (e) => {
         console.log(newUser);
-        e.preventDefault()
+        e.preventDefault();
         fetch("/signup", {
             method: "POST",
             headers:{'Content-Type':'application/json'},

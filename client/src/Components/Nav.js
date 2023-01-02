@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import LoginForm from './LoginForm'
 
-function Nav ({setCurrentUser, setErrors, errors, currentUser, handleLogOut, handleDisplayForm}) {
+function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
 
 
 if (currentUser) return <button id='logout-button' onClick={handleLogOut}>Log me out plz</button>
