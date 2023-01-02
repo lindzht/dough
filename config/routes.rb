@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete "/logout", to:"sessions#destroy"
 
   # keeps user logged in
-  get "/me", to: "user#show"
+  get "/me", to: "users#show"
   
 
 

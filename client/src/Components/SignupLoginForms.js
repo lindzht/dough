@@ -1,10 +1,11 @@
 import {useState} from 'react';
 
-function SignupLoginForms({setCurrentUser, setErrors, errors}) {
+function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors}) {
 
     const [newUser, setNewUser] = useState({
         username: "",
         name: "",
+        income: "",
         password: "", 
         password_confirmation: ""
     })
@@ -27,6 +28,7 @@ function SignupLoginForms({setCurrentUser, setErrors, errors}) {
         setNewUser({
             username: "",
             name: "",
+            income: "",
             password: "", 
             password_confirmation: ""
         })
@@ -59,6 +61,12 @@ function SignupLoginForms({setCurrentUser, setErrors, errors}) {
                     name="name"
                     value={newUser.name}
                     onChange={handleChange}/>
+                income: <input
+                    type="number"
+                    name="income"
+                    placeholder='$'
+                    value={newUser.income}
+                    onChange={handleChange}/>
                 password:<input 
                     type="password"
                     name="password"
@@ -71,6 +79,7 @@ function SignupLoginForms({setCurrentUser, setErrors, errors}) {
                     onChange={handleChange}/>
                 <input 
                     type="submit"/>
+                <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
                 </form>
             </div>
             <div id="errors-container">

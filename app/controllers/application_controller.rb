@@ -4,6 +4,8 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
+  before_action :authorized 
+
   private
   
   def render_record_not_found (error)
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::API
   
   def render_invalid(invalid)
     render json: {errors: ErrorMessageSerializer.error_message(invalid.record.errors)}, status: :unprocessable_entity
+  end
+
+  def authorized
+    return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
   end
 
 end

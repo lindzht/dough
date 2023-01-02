@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +35,48 @@
   to {
     transform: rotate(360deg);
   }
+} */ 
+
+#signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-form form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:aliceblue;
+  padding: 3em;
+  text-transform: capitalize;
+}
+
+#signup-form form input {
+  margin-bottom: 1em;
+  width: 20em;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-form form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:aliceblue;
+  padding: 3em;
+  text-transform: capitalize;
+}
+
+#login-form form input {
+  margin-bottom: 1em;
+  width: 20em;
 }
