@@ -13,7 +13,6 @@ function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors,
     const handleSignup = (e) => {
         console.log(newUser);
         e.preventDefault();
-        handleDisplayForm();
         fetch("/signup", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
@@ -22,6 +21,7 @@ function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors,
         .then(res => {
             if(res.ok){
                 res.json().then(setCurrentUser)
+                handleDisplayForm();
             } else {
                 res.json().then(data => setErrors(data.errors))
             }
@@ -81,14 +81,14 @@ function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors,
                 <input 
                     type="submit"/>
                 <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
+                <div id="errors-container">
+                    {errors ? 
+                    errors.map(e => {
+                        return <p key={e}>{e}</p>})
+                    : null
+                    }
+                </div>
                 </form>
-            </div>
-            <div id="errors-container">
-                {errors ? 
-                errors.map(e => {
-                    return <p key={e}>{e}</p>})
-                : null
-                }
             </div>
         </div>      
     )
