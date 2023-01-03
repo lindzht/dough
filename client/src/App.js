@@ -1,5 +1,4 @@
 import './App.css';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react'
 import Nav from './Components/Nav';
