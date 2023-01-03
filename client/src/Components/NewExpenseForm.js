@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Form, Input, Button, Container } from 'semantic-ui-react';
 
 function NewExpenseForm (){
     // Form to track new expense details
@@ -19,35 +20,44 @@ function NewExpenseForm (){
 
     return(
         <div id="new-expense-form-container">
-            <div id="new-expense-form">
-                <form onSubmit={handleNewExpense}>
-                    Item:<input
-                        type="string"
+            <Container>
+                <Form onSubmit={handleNewExpense}>
+                    <Form.Field
+                        control={Input}
+                        label="Item"
+                        type="item"
                         name="item"
+                        placeholder="What did you pay for? be fr"
                         value={expense.item}
                         onChange={handleExpenseForm}
                     />
-                    Cost:<input
-                        type="number"
+                    <Form.Field
+                        control={Input}
+                        label="Cost"
+                        type="cost"
                         name="cost"
                         value={expense.cost}
                         onChange={handleExpenseForm}
                     />
-                    Date of Expense:<input
+                     <Form.Field
+                        control={Input}
+                        label="Date of Expense"
                         type="date"
-                        name="date"
+                        name="date-of-expense"
                         value={expense.date}
                         onChange={handleExpenseForm}
                     />
-                    Category:<input
-                        type=""
-                        name=""
+                    <Form.Field
+                        control={Input}
+                        label="Category"
+                        type="category"
+                        name="category"
                         value={expense.category}
                         onChange={handleExpenseForm}
                     />
                     {/* Note:<input></input> */}
-                </form>
-            </div>
+                </Form>
+            </Container>
         </div>
     )
 }

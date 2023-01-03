@@ -53,7 +53,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} />
     return(
         <div id="login-container">
-            <div id="login-form"> 
+            <div> 
                 <form onSubmit={handleLogin}>
                 username:<input
                     type="username"
