@@ -4,8 +4,6 @@ import SignupForm from './SignupForm';
 
 function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 
-    // const history = useHistory()
-
     const [displaySignup, setDisplaySignup] = useState(false);
 
     const handleSignupFormDisplay = () => {
@@ -30,6 +28,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
                 res.json().then(user => {
                     setCurrentUser(user);
                     handleDisplayForm();
+                    // navigate('dashboard');
             }) 
             } else {
                 res.json().then(data => {for (const key in data){setErrors(data[key]);}})
@@ -51,7 +50,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 
 
 
-if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm}/>
+if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} />
     return(
         <div id="login-container">
             <div id="login-form"> 

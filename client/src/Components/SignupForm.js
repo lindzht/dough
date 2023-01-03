@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Form, Input, Button, Container } from 'semantic-ui-react';
 
 function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 
@@ -22,6 +23,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
             if(res.ok){
                 res.json().then(setCurrentUser)
                 handleDisplayForm();
+                // navigate('dashboard');
             } else {
                 res.json().then(data => setErrors(data.errors))
             }
@@ -50,46 +52,60 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
     return(
 
         <div id="signup-container">
-            <div id="signup-form"> 
-                <form onSubmit={handleSignup}>
-                username:<input
-                    type="username"
-                    name="username"
-                    value={newUser.username}
-                    onChange={handleChange}/>
-                name: <input
-                    type="name"
-                    name="name"
-                    value={newUser.name}
-                    onChange={handleChange}/>
-                income: <input
-                    type="number"
-                    name="income"
-                    placeholder='$'
-                    value={newUser.income}
-                    onChange={handleChange}/>
-                password:<input 
-                    type="password"
-                    name="password"
-                    value={newUser.password}
-                    onChange={handleChange}/>
-                confirm password:<input 
-                    type="password"
-                    name="password_confirmation"
-                    value={newUser.password_confirmation}
-                    onChange={handleChange}/>
-                <input 
-                    type="submit"/>
-                <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
-                <div id="errors-container">
-                    {errors ? 
-                    errors.map(e => {
-                        return <p key={e}>{e}</p>})
-                    : null
-                    }
-                </div>
-                </form>
-            </div>
+            <Container> 
+                <Form onSubmit={handleSignup}>
+                    <Form.Field
+                        control={Input}
+                        label="username:"
+                        type="username"
+                        name="username"
+                        value={newUser.username}
+                        onChange={handleChange}
+                    />
+                    <Form.Field 
+                        control={Input}
+                        label="name:"
+                        type="name"
+                        name="name"
+                        value={newUser.name}
+                        onChange={handleChange}
+                    />
+                    <Form.Field 
+                        control={Input}
+                        label="Income:"
+                        type="number"
+                        name="income"
+                        placeholder='$'
+                        value={newUser.income}
+                        onChange={handleChange}
+                    />
+                    <Form.Field 
+                        control={Input}
+                        label="password:"
+                        type="password"
+                        name="password"
+                        value={newUser.password}
+                        onChange={handleChange}
+                    />
+                    <Form.Field 
+                        control={Input}
+                        label="password confirmation:"
+                        type="password"
+                        name="password_confirmation"
+                        value={newUser.password_confirmation}
+                        onChange={handleChange}
+                    />
+                    <Form.Field control={Button}>Submit!</Form.Field>
+                    <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
+                    <div id="errors-container">
+                        {errors ? 
+                        errors.map(e => {
+                            return <p key={e}>{e}</p>})
+                        : null
+                        }
+                    </div>
+                </Form>
+            </Container>
         </div>      
     )
 }
