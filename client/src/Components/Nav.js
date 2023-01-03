@@ -5,25 +5,17 @@ import LoginForm from './LoginForm'
 
 function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
 
-
-    // if (currentUser) return <button id='logout-button' onClick={handleLogOut}>Log me out plz</button>
-    // if (!currentUser) {
-    //     return (
-    //         <Menu>
-    //             <Menu.Item onClick={handleDisplayForm}>
-    //                 <Link to="/login">
-    //                     Login baby!
-    //                 </Link>
-    //             </Menu.Item>
-    //         </Menu> 
-    //     )
-    // } else {
-
     const HiddenNav = () => {
         return (
-        <> 
-            <Dropdown item text='Dashboard'>
+            <> 
+                <Menu.Item>
+                    DoUgH
+                </Menu.Item>
+                <Dropdown item text='Navigate'>
                     <Dropdown.Menu>
+                        <Link to="/dashboard">
+                            <Dropdown.Item text='Dashboard'/>
+                        </Link>
                         <Link to="/prev">
                             <Dropdown.Item text='Previous Month'/>
                         </Link>
@@ -48,21 +40,26 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                         Logout
                     </Menu.Item>
                 </Menu.Menu>
-        </>)
+            </>
+        )
     }
 
 
     return(
         <>
             <Menu>
-                
                 { currentUser ? <HiddenNav /> : 
                  <> 
-                    <Menu.Item onClick={handleDisplayForm}>
-                        <Link to="/login">
-                            Login baby!
-                        </Link>
+                    <Menu.Item>
+                        DoUgH
                     </Menu.Item>
+                    <Menu.Menu position="right">
+                        <Menu.Item onClick={handleDisplayForm}>
+                            <Link to="/login">
+                                Login baby!
+                            </Link>
+                        </Menu.Item>
+                    </Menu.Menu>
                  </> 
                 }
             </Menu>
