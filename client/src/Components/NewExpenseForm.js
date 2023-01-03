@@ -12,11 +12,31 @@ function NewExpenseForm (){
     })
 
     const handleExpenseForm = (e) => {
-        e.preventDefault();
+        const key = e.target.name;
+        const value = e.target.value;
+
+        setExpense({
+            ...expense, 
+            [key]: value
+        })
 
     }
 
-    const handleNewExpense = () => {}
+    const handleNewExpense = (e) => {
+        e.preventDefault();
+        fetch("/new-expense", {
+            method: "POST",
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(expense)
+        })
+        .then(r => {
+            if(r.ok) {
+                r.json().then(console.log(expense))
+            } else {
+                r.json().then(data => setErrors(data.errors))
+            }
+        })
+    }
 
     return(
         <div id="new-expense-form-container">
@@ -57,6 +77,7 @@ function NewExpenseForm (){
                     />
                     {/* Note:<input></input> */}
                 </Form>
+                <Form.Field control={Button}>Add New Expense</Form.Field>
             </Container>
         </div>
     )
