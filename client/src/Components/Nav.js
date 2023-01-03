@@ -30,7 +30,7 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                         All Expenses
                     </Menu.Item>
                     <Menu.Menu position="right">
-                        <Menu.Item>
+                        <Menu.Item onClick={handleLogOut}>
                             Logout
                         </Menu.Item>
                     </Menu.Menu>
