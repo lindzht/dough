@@ -37,7 +37,7 @@
   }
 } */ 
 
-#nav {
+/* #nav {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -96,4 +96,4 @@
 #login-form form input {
   margin-bottom: 1em;
   width: 20em;
-}
+} */

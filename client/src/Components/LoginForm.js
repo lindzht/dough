@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import SignupLoginForms from './SignupLoginForms';
+import SignupForm from './SignupForm';
 
 
 function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
@@ -51,7 +51,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 
 
 
-if (displaySignup) return <SignupLoginForms handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm}/>
+if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm}/>
     return(
         <div id="login-container">
             <div id="login-form"> 

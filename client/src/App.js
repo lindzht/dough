@@ -1,8 +1,15 @@
 import './App.css';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react'
-import SignupLoginForm from './Components/SignupLoginForms';
-import LoginForm from './Components/LoginForm';
 import Nav from './Components/Nav';
+import Dashboard from './Components/Dashboard';
+import LandingPage from './Components/LandingPage';
+import NewExpenseForm from './Components/NewExpenseForm';
+import PrevMonth from './Components/PrevMonth';
+import Savings from './Components/Savings';
+import Categories from './Components/Categories';
+import AllExpenses from './Components/AllExpenses';
 
 function App() {
 
@@ -43,24 +50,27 @@ function App() {
 
 
 return (
-    <div className="App">
-
-      <Nav 
-        setCurrentUser={setCurrentUser} 
-        currentUser={currentUser}
-        setErrors={setErrors} 
-        errors={errors} 
-        handleLogOut={handleLogOut}
-        handleDisplayForm={handleDisplayForm}
-        />
-
-      <h1>SUP {currentUser? currentUser.username : "STRANGER"}</h1>
-      <h3> Basic home stuff is here! </h3>
-
-      {!currentUser ? <h4>Go fucking login!</h4> : <h4>Oh shit you're logged! Let's redirect you to other components somehow</h4> }
-      {displayForms ? <LoginForm handleDisplayForm={handleDisplayForm} setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/> : null }
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <Nav 
+            setCurrentUser={setCurrentUser} 
+            currentUser={currentUser}
+            setErrors={setErrors} 
+            errors={errors} 
+            handleLogOut={handleLogOut}
+            handleDisplayForm={handleDisplayForm}
+            />
+        }>
+          <Route index element={currentUser? <Dashboard/> : <LandingPage currentUser={currentUser} displayForms={displayForms} handleDisplayForm={handleDisplayForm} setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
+          <Route path="all-expenses" element={<AllExpenses/>}/>
+          <Route path="prev-month" element={<PrevMonth />}/>
+          <Route path="categories" element={<Categories />}/>
+          <Route path="savings" element={<Savings />}/>
+          <Route path="new-expense" element={<NewExpenseForm />}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
