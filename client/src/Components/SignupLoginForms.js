@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors}) {
+function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 
     const [newUser, setNewUser] = useState({
         username: "",
@@ -13,6 +13,7 @@ function SignupLoginForms({handleFormDisplay, setCurrentUser, setErrors, errors}
     const handleSignup = (e) => {
         console.log(newUser);
         e.preventDefault();
+        handleDisplayForm();
         fetch("/signup", {
             method: "POST",
             headers:{'Content-Type':'application/json'},

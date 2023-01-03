@@ -10,6 +10,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 
     const handleSignupFormDisplay = () => {
         setDisplaySignup(!displaySignup);
+        setErrors([]);
     }
 
     const [user, setUser] = useState({
@@ -18,9 +19,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
     })
 
     const handleLogin = (e) => {
-        console.log(user);
         e.preventDefault();
-        handleDisplayForm();
         fetch("/login", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
@@ -28,10 +27,12 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
         })
         .then(res => {
             if(res.ok){
-                res.json().then(user => {setCurrentUser(user);
+                res.json().then(user => {
+                    setCurrentUser(user);
+                    handleDisplayForm();
             }) 
             } else {
-                res.json().then(data => setErrors(errors))
+                res.json().then(data => {for (const key in data){setErrors(data[key]);}})
             }
         }) 
         
@@ -48,7 +49,9 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
         })
     }
 
-if (displaySignup) return <SignupLoginForms handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser}/>
+
+
+if (displaySignup) return <SignupLoginForms handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm}/>
     return(
         <div id="login-container">
             <div id="login-form"> 
@@ -66,14 +69,10 @@ if (displaySignup) return <SignupLoginForms handleFormDisplay={handleSignupFormD
                 <input 
                     type="submit"/>
                 <h5 onClick={handleSignupFormDisplay}>Don't have an account?</h5>
+                <div id="errors-container">
+                    {errors ? <p>{errors}</p> : null}
+                </div>
                 </form>
-            </div>
-            <div id="errors-container">
-                {errors ? 
-                errors.map(e => {
-                    return <p key={e}>{e}</p>})
-                : null
-                }
             </div>
         </div>      
     )
