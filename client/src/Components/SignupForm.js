@@ -56,7 +56,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                 <Form onSubmit={handleSignup}>
                     <Form.Field
                         control={Input}
-                        label="username:"
+                        label="Username:"
                         type="username"
                         name="username"
                         value={newUser.username}
@@ -64,7 +64,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="name:"
+                        label="Name:"
                         type="name"
                         name="name"
                         value={newUser.name}
@@ -81,7 +81,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="password:"
+                        label="Password:"
                         type="password"
                         name="password"
                         value={newUser.password}
@@ -89,14 +89,16 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="password confirmation:"
+                        label="Password Confirmation:"
                         type="password"
                         name="password_confirmation"
                         value={newUser.password_confirmation}
                         onChange={handleChange}
                     />
-                    <Form.Field control={Button}>Submit!</Form.Field>
-                    <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
+                    <Form.Button type="submit">Submit</Form.Button>
+                    JK I have an account!
+                    <br/>
+                    <Button onClick={handleFormDisplay}>Login</Button>
                     <div id="errors-container">
                         {errors ? 
                         errors.map(e => {

@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Container, Form, Input, Button } from 'semantic-ui-react';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,6 +36,10 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
                 res.json().then(data => {for (const key in data){setErrors(data[key]);}})
             }
         }) 
+        setUser({
+            username: "",
+            password: ""
+        })
         
     }
 
@@ -54,26 +59,34 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} navigate={navigate}/>
     return(
         <div id="login-container">
-            <div> 
-                <form onSubmit={handleLogin}>
-                username:<input
-                    type="username"
-                    name="username"
-                    value={user.username}
-                    onChange={handleChange}/>
-                password:<input 
-                    type="password"
-                    name="password"
-                    value={user.password}
-                    onChange={handleChange}/>
-                <input 
-                    type="submit"/>
-                <h5 onClick={handleSignupFormDisplay}>Don't have an account?</h5>
-                <div id="errors-container">
-                    {errors ? <p>{errors}</p> : null}
-                </div>
-                </form>
-            </div>
+
+            <Container id="login-form"> 
+                <Form onSubmit={handleLogin}>
+                    <Form.Field 
+                        control={Input}
+                        label="Username:"
+                        name="username"
+                        placeholder="Username"
+                        value={user.username}
+                        onChange={handleChange}
+                    />
+                    <Form.Field 
+                        control={Input}
+                        label="Password:"
+                        type="password"
+                        name="password"
+                        value={user.password}
+                        onChange={handleChange}
+                    />
+                    <Form.Button type="submit">Login</Form.Button>  
+                    Don't have an account?
+                    <br/>
+                    <Button onClick={handleSignupFormDisplay}>Sign Up</Button>
+                    <div id="errors-container">
+                        {errors ? <p>{errors}</p> : null}
+                    </div>
+                </Form>
+            </Container>
         </div>      
     )
 }
