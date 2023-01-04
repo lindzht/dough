@@ -5,11 +5,15 @@ import LoginForm from './LoginForm'
 
 function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
 
+
+
     const HiddenNav = () => {
         return (
             <> 
                 <Menu.Item>
-                    DoUgH
+                    <Link to="/dashboard">
+                        DoUgH
+                    </Link>
                 </Menu.Item>
                 <Dropdown item text='Navigate'>
                     <Dropdown.Menu>
@@ -51,7 +55,9 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                 { currentUser ? <HiddenNav /> : 
                  <> 
                     <Menu.Item>
-                        DoUgH
+                        <Link to="/">
+                            DoUgH
+                        </Link>
                     </Menu.Item>
                     <Menu.Menu position="right">
                         <Menu.Item onClick={handleDisplayForm}>
