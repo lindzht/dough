@@ -2,7 +2,10 @@ class ExpensesController < ApplicationController
     
     skip_before_action :authorized, only: [:create, :index]
 
-    
+    def index 
+        render json: Expense.all, status: :ok
+    end
+
     def create
         expense = Expense.create!(expense_params)
         render json: expense, status: :created
