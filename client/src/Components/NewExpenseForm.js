@@ -1,14 +1,30 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
 function NewExpenseForm ({setErrors, errors}){
+    const [categories, setCategories] = useState([])
+    useEffect(() => {
+        fetch("/categories")
+        .then(res => res.json())
+        .then(setCategories)
+    }, [])
+    console.log(categories)
+
+    const handleCategories = categories.map(c => {
+            return (
+                <option value={c.id} key={c.id}>
+                    {c.category_name} 
+                </option>
+            )
+    })
+
     // Form to track new expense details
     const [expense, setExpense] = useState({
         item: "",
         cost: 0,
         // needs to match column names in schema
         // date_of_expense: "",
-        category_id: 1
+        category_id: ""
         // note: ""
     })
     console.log(expense)
@@ -20,7 +36,6 @@ function NewExpenseForm ({setErrors, errors}){
             ...expense, 
             [key]: value
         })
-
     }
 
     const handleNewExpense = (e) => {
@@ -70,8 +85,9 @@ function NewExpenseForm ({setErrors, errors}){
                     onChange={handleExpenseForm}
                 />
                 <label>Category</label> 
-                <select name="category_id" onChange={handleExpenseForm} value={expense.category}> 
-
+                <select name="category_id" onChange={handleExpenseForm} value={expense.category_id}>
+                    <option value="">Select</option>
+                    {handleCategories}
                 </select>
                 {/* Note:<input></input> */}
                 {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
