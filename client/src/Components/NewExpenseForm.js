@@ -33,7 +33,7 @@ function NewExpenseForm (){
             if(r.ok) {
                 r.json().then(console.log(expense))
             } else {
-                r.json().then(data => setErrors(data.errors))
+                r.json().then()
             }
         })
     }

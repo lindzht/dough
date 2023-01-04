@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   # keeps user logged in
   get "/me", to: "users#show"
+
+  # adds new expense 
+  post "/new-expense", to: "expenses#create"
   
 
 
