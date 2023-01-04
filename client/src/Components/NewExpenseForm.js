@@ -6,11 +6,12 @@ function NewExpenseForm ({setErrors, errors}){
     const [expense, setExpense] = useState({
         item: "",
         cost: 0,
-        date: "",
-        category: ""
+        // needs to match column names in schema
+        // date_of_expense: "",
+        category_id: 1
         // note: ""
     })
-    // console.log(expense)
+    console.log(expense)
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
@@ -41,45 +42,48 @@ function NewExpenseForm ({setErrors, errors}){
 
     return(
         <div id="new-expense-form-container">
-            <Container>
-                <Form onSubmit={handleNewExpense}>
-                    <Form.Field
-                        control={Input}
-                        label="Item"
-                        type="item"
-                        name="item"
-                        placeholder="What did you pay for? be fr"
-                        value={expense.item}
-                        onChange={handleExpenseForm}
-                    />
-                    <Form.Field
-                        control={Input}
-                        label="Cost"
-                        type="cost"
-                        name="cost"
-                        value={expense.cost}
-                        onChange={handleExpenseForm}
-                    />
-                     <Form.Field
-                        control={Input}
-                        label="Date of Expense"
-                        type="date"
-                        name="date-of-expense"
-                        value={expense.date}
-                        onChange={handleExpenseForm}
-                    />
-                    <Form.Field
-                        control={Input}
-                        label="Category"
-                        type="category"
-                        name="category"
-                        value={expense.category}
-                        onChange={handleExpenseForm}
-                    />
-                    {/* Note:<input></input> */}
-                    <Form.Field control={Button}>Add New Expense</Form.Field>
-                </Form>
-            </Container>
+            <form onSubmit={handleNewExpense}>
+                <label>Item</label>
+                <input
+                    label="Item"
+                    type="item"
+                    name="item"
+                    placeholder="What did you pay for? be fr"
+                    value={expense.item}
+                    onChange={handleExpenseForm}
+                />
+                <label>Cost</label>
+                <input
+                    label="Cost"
+                    type="cost"
+                    name="cost"
+                    value={expense.cost}
+                    onChange={handleExpenseForm}
+                />
+                <label>Date of Expense</label>
+                <input
+                    control={Input}
+                    label="Date of Expense"
+                    type="date"
+                    name="date_of_expense"
+                    value={expense.date}
+                    onChange={handleExpenseForm}
+                />
+                <label>Category</label> 
+                <select name="category_id" onChange={handleExpenseForm} value={expense.category}> 
+
+                </select>
+                {/* Note:<input></input> */}
+                {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
+                <input type="submit" value="Submit"></input>
+                <div id="errors-container">
+                    {errors ? 
+                    errors.map(e => {
+                        return <p key={e}>{e}</p>})
+                    : null
+                    }
+                </div>
+            </form>
         </div>
     )
 }
