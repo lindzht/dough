@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :expenses
+  resources :expenses, only: [:create]
   resources :categories, only: [:create, :index]
   resources :users
 
@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
 
   get "/categories-summary", to: "categories#category_summary"
+  
   # adds new expense 
-  post "/new-expense", to: "expenses#create"
+  # post "/new-expense", to: "expenses#create"
 
 
   
