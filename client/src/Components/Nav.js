@@ -18,6 +18,7 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
     //         </Menu> 
     //     )
     // } else {
+        
 
     const HiddenNav = () => {
         return (
