@@ -17,6 +17,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [displayForms, setDisplayForms ] = useState(false)
+  const [expenses, setExpenses] = useState([])
 
   // const navigate = useNavigate();
 
@@ -31,7 +32,11 @@ function App() {
           console.log(currentUser)
         })
       }
-    })
+    });
+
+    fetch("/expenses")
+    .then(r=>r.json())
+    .then(setExpenses)
   }, []);
 
   //LOGOUT: 
@@ -65,11 +70,9 @@ return (
           }>
           <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
           <Route path="dashboard" element={<Dashboard />}/>
-          <Route path="expenses" element={<AllExpenses
-            setErrors={setErrors} 
-            errors={errors} 
-          />}
-          />
+
+          <Route path="expenses" element={<AllExpenses expenses={expenses} setErrors={setErrors} errors={errors} />}/>
+
           <Route path="prev" element={<PrevMonth />}/>
           <Route path="categories" element={<Categories setErrors={setErrors}  errors={errors} />}/>
           <Route path="savings" element={<Savings />}/>

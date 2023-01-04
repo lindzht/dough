@@ -3,6 +3,11 @@ class ExpensesController < ApplicationController
     wrap_parameters format: []
     skip_before_action :authorized, only: [:create, :index]
 
+
+    def index 
+        render json: Expense.all, status: :ok
+    end
+
     def create
         # byebug
         params[:user_id] = session[:user_id]

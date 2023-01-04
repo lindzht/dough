@@ -1,4 +1,3 @@
-
 Category.destroy_all
 Expense.destroy_all
 
@@ -12,6 +11,7 @@ c6 = Category.create(category_name: "Travel", cat_type: "Fun")
 c7 = Category.create(category_name: "Dining", cat_type: "Fun")
 c8 = Category.create(category_name: "Streaming Service", cat_type: "Fun")
 c9 = Category.create(category_name: "Entertainment", cat_type: "Fun")
+
 
 
 Expense.create(item: "Cell Phone Bill", cost: 50.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
