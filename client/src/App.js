@@ -57,8 +57,7 @@ return (
         <Route path="/" element={
           <Nav  
             currentUser={currentUser}
-            setErrors={setErrors
-            } 
+            setErrors={setErrors} 
             errors={errors} 
             handleLogOut={handleLogOut}
             handleDisplayForm={handleDisplayForm}
