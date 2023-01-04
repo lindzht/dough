@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
 
   get "/categories-summary", to: "categories#category_summary"
-
-
-  
+  # adds new expense 
+  post "/new-expense", to: "expenses#create"
 
 
   
