@@ -3,6 +3,11 @@ class CategoriesController < ApplicationController
     wrap_parameters format: []
     skip_before_action :authorized, only: [:index]
 
+    # def index
+    #     categories = Category.category_types
+    #     render json: categories, status: :ok
+    # end
+
     def index
         render json: Category.all, status: :ok
     end
@@ -13,7 +18,7 @@ class CategoriesController < ApplicationController
     end
 
     def category_summary
-        summary = Category.category_count
+        summary = Category.category_types
         render json: summary, status: :ok
     end
 
