@@ -8,7 +8,7 @@ class Category < ApplicationRecord
 
 
     def self.category_types
-        self.all.uniq.pluck(:cat_type)
+        self.distinct.pluck(:cat_type)
     end
 
     def self.category_count
