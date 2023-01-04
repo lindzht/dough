@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
-function NewExpenseForm (){
+function NewExpenseForm ({setErrors, errors}){
     // Form to track new expense details
     const [expense, setExpense] = useState({
         item: "",
@@ -10,7 +10,7 @@ function NewExpenseForm (){
         category: ""
         // note: ""
     })
-
+    // console.log(expense)
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
@@ -24,16 +24,17 @@ function NewExpenseForm (){
 
     const handleNewExpense = (e) => {
         e.preventDefault();
-        fetch("/new-expense", {
+        console.log(expense)
+        fetch("/expenses", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(expense)
         })
-        .then(r => {
-            if(r.ok) {
-                r.json().then(console.log(expense))
+        .then(res => {
+            if(res.ok) {
+                res.json().then(console.log(expense))
             } else {
-                r.json().then()
+                res.json().then(console.log(errors))
             }
         })
     }
@@ -76,8 +77,8 @@ function NewExpenseForm (){
                         onChange={handleExpenseForm}
                     />
                     {/* Note:<input></input> */}
+                    <Form.Field control={Button}>Add New Expense</Form.Field>
                 </Form>
-                <Form.Field control={Button}>Add New Expense</Form.Field>
             </Container>
         </div>
     )
