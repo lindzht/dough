@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import SignupForm from './SignupForm';
+import { useNavigate } from 'react-router-dom';
 
 
 function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
-
+    let navigate = useNavigate();
     const [displaySignup, setDisplaySignup] = useState(false);
 
     const handleSignupFormDisplay = () => {
@@ -28,7 +29,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
                 res.json().then(user => {
                     setCurrentUser(user);
                     handleDisplayForm();
-                    // navigate('dashboard');
+                    navigate('/');
             }) 
             } else {
                 res.json().then(data => {for (const key in data){setErrors(data[key]);}})
@@ -50,7 +51,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 
 
 
-if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} />
+if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} navigate={navigate}/>
     return(
         <div id="login-container">
             <div id="login-form"> 
