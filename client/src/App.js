@@ -11,6 +11,7 @@ import Categories from './Components/Categories';
 import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
 
+
 function App() {
 
   const [errors, setErrors] = useState([])
@@ -66,7 +67,7 @@ return (
           <Route path="dashboard" element={<Dashboard />}/>
           <Route path="expenses" element={<AllExpenses/>}/>
           <Route path="prev" element={<PrevMonth />}/>
-          <Route path="categories" element={<Categories />}/>
+          <Route path="categories" element={<Categories setErrors={setErrors}  errors={errors} />}/>
           <Route path="savings" element={<Savings />}/>
           <Route path="new" element={<NewExpenseForm />}/>
           <Route path="login" element={<LoginForm 

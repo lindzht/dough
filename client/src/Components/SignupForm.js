@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
-function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
+function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm, navigate}) {
 
     const [newUser, setNewUser] = useState({
         username: "",
@@ -23,7 +23,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
             if(res.ok){
                 res.json().then(setCurrentUser)
                 handleDisplayForm();
-                // navigate('dashboard');
+                navigate('/');
             } else {
                 res.json().then(data => setErrors(data.errors))
             }

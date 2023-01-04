@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :expenses
-  resources :categories
+  resources :categories, only: [:create, :index]
   resources :users
 
   post "/signup", to: "users#create"
@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   # keeps user logged in
   get "/me", to: "users#show"
-  
+
+  get "/categories-summary", to: "categories#category_summary"
+  # adds new expense 
+  post "/new-expense", to: "expenses#create"
 
 
   

@@ -5,8 +5,6 @@ import LoginForm from './LoginForm'
 
 function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
 
-
-
     const HiddenNav = () => {
         return (
             <> 
