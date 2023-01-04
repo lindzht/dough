@@ -6,6 +6,10 @@ function Categories({setErrors, errors}){
 
     const [categories, setCategories] = useState([]);
     const [displayForms, setDisplayForms] = useState(false);
+    const [newCategory, setNewCategory] = useState({
+      category_name: "",
+      cat_type: ""
+  })
 
     useEffect(() => {
         fetch("/categories-summary")
@@ -13,28 +17,33 @@ function Categories({setErrors, errors}){
           if(res.ok){
             res.json()
             .then(data => {
-              setCategories(data)
+              setCategories(data)  
             })
           }
         })
-      }, []);
-
-    //   const renderCategories = () => {
-    //     categories.map((category,index) => {
-    //       return <p key={index}>{category} </p> 
-    //     })
-    //   }
+      }, [newCategory]);
 
     const handleDisplayForm = () => {
         setDisplayForms(!displayForms)
     }
 
+    // console.log(categories);
+
+    const renderCategory = categories.map((c) => {
+      return (
+        <p key={c} value={c}>
+          {c}
+        </p>
+      );
+    });
+    
+
     return(
        <div id="category-container">
-            {/* {renderCategories} */}
+            {renderCategory}
             <h3>Here's a summary of your categories!</h3>
             <Button onClick={handleDisplayForm}>Add New Category</Button>
-            {displayForms ? <CategoriesForm setErrors={setErrors} errors={errors} /> : null}
+            {displayForms ? <CategoriesForm handleDisplayForm={handleDisplayForm} setErrors={setErrors} errors={errors} newCategory={newCategory} setNewCategory={setNewCategory}/> : null}
 
        </div>
     )

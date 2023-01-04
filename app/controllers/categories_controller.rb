@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
     skip_before_action :authorized, only: [:index]
 
     def index
-        render json: Category.all, status: :ok
+        categories = Category.category_types
+        render json: categories, status: :ok
     end
 
     def create 
