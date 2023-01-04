@@ -1,16 +1,33 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
-function NewExpenseForm (){
+function NewExpenseForm ({setErrors, errors}){
+    const [categories, setCategories] = useState([])
+    useEffect(() => {
+        fetch("/categories")
+        .then(res => res.json())
+        .then(setCategories)
+    }, [])
+    console.log(categories)
+
+    const handleCategories = categories.map(c => {
+            return (
+                <option value={c.id} key={c.id}>
+                    {c.category_name} 
+                </option>
+            )
+    })
+
     // Form to track new expense details
     const [expense, setExpense] = useState({
         item: "",
         cost: 0,
-        date: "",
-        category: ""
+        // needs to match column names in schema
+        // date_of_expense: "",
+        category_id: ""
         // note: ""
     })
-
+    console.log(expense)
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
@@ -19,66 +36,70 @@ function NewExpenseForm (){
             ...expense, 
             [key]: value
         })
-
     }
 
     const handleNewExpense = (e) => {
         e.preventDefault();
-        fetch("/new-expense", {
+        console.log(expense)
+        fetch("/expenses", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(expense)
         })
-        .then(r => {
-            if(r.ok) {
-                r.json().then(console.log(expense))
+        .then(res => {
+            if(res.ok) {
+                res.json().then(console.log(expense))
             } else {
-                r.json().then()
+                res.json().then(console.log(errors))
             }
         })
     }
 
     return(
         <div id="new-expense-form-container">
-            <Container>
-                <Form onSubmit={handleNewExpense}>
-                    <Form.Field
-                        control={Input}
-                        label="Item"
-                        type="item"
-                        name="item"
-                        placeholder="What did you pay for? be fr"
-                        value={expense.item}
-                        onChange={handleExpenseForm}
-                    />
-                    <Form.Field
-                        control={Input}
-                        label="Cost"
-                        type="cost"
-                        name="cost"
-                        value={expense.cost}
-                        onChange={handleExpenseForm}
-                    />
-                     <Form.Field
-                        control={Input}
-                        label="Date of Expense"
-                        type="date"
-                        name="date-of-expense"
-                        value={expense.date}
-                        onChange={handleExpenseForm}
-                    />
-                    <Form.Field
-                        control={Input}
-                        label="Category"
-                        type="category"
-                        name="category"
-                        value={expense.category}
-                        onChange={handleExpenseForm}
-                    />
-                    {/* Note:<input></input> */}
-                </Form>
-                <Form.Field control={Button}>Add New Expense</Form.Field>
-            </Container>
+            <form onSubmit={handleNewExpense}>
+                <label>Item</label>
+                <input
+                    label="Item"
+                    type="item"
+                    name="item"
+                    placeholder="What did you pay for? be fr"
+                    value={expense.item}
+                    onChange={handleExpenseForm}
+                />
+                <label>Cost</label>
+                <input
+                    label="Cost"
+                    type="cost"
+                    name="cost"
+                    value={expense.cost}
+                    onChange={handleExpenseForm}
+                />
+                <label>Date of Expense</label>
+                <input
+                    control={Input}
+                    label="Date of Expense"
+                    type="date"
+                    name="date_of_expense"
+                    value={expense.date}
+                    onChange={handleExpenseForm}
+                />
+                <label>Category</label> 
+                <select name="category_id" onChange={handleExpenseForm} value={expense.category_id}>
+                    <option value="">Select</option>
+                    {handleCategories}
+                </select>
+                {/* Note:<input></input> */}
+                {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
+                <input type="submit" value="Submit"></input>
+                <div id="errors-container">
+                    {errors ? 
+                    errors.map(e => {
+                        return <p key={e}>{e}</p>})
+                    : null
+                    }
+                </div>
+            </form>
         </div>
     )
 }
