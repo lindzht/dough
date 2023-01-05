@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Container, Form, Input, Button } from 'semantic-ui-react';
+import { Header, Container, Form, Input, Button } from 'semantic-ui-react';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
                 res.json().then(user => {
                     setCurrentUser(user);
                     handleDisplayForm();
-                    navigate('/');
+                    navigate('/dashboard');
             }) 
             } else {
                 res.json().then(data => {for (const key in data){setErrors(data[key]);}})
@@ -59,7 +59,9 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} navigate={navigate}/>
     return(
         <div id="login-container">
-
+            <div>
+                <Header size="huge">Please Login!</Header>
+            </div>
             <Container id="login-form"> 
                 <Form onSubmit={handleLogin}>
                     <Form.Field 

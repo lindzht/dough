@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :expenses, only: [:create]
+  resources :expenses, only: [:create, :index]
   resources :categories, only: [:create, :index]
   resources :users
 

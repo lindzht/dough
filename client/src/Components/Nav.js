@@ -1,7 +1,10 @@
 import {useState} from 'react'
 import { Outlet, Link } from 'react-router-dom';
-import { Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Image, Menu } from 'semantic-ui-react';
 import LoginForm from './LoginForm'
+import DoughLine from '../images/DoughLine.png';
+import DoughDoughnut from '../images/DoughDoughnut.png';
+import DoughArc from '../images/DoughArc.png';
 
 function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
 
@@ -10,7 +13,8 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
             <> 
                 <Menu.Item>
                     <Link to="/dashboard">
-                        DoUgH
+                        <Image src={DoughLine} size="small" />
+                        {/* <Image src={DoughDoughnut} size="tiny" /> */}
                     </Link>
                 </Menu.Item>
                 <Dropdown item text='Navigate'>
@@ -39,7 +43,9 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                 </Menu.Item>
                 <Menu.Menu position="right">
                     <Menu.Item onClick={handleLogOut}>
-                        Logout
+                        <Link to="/">
+                            Logout
+                        </Link>
                     </Menu.Item>
                 </Menu.Menu>
             </>
@@ -54,7 +60,9 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                  <> 
                     <Menu.Item>
                         <Link to="/">
-                            DoUgH
+                            <Image src={DoughDoughnut} size="tiny" />
+                            {/* <Image src={DoughArc} size="small" /> */}
+                            {/* <Image src={DoughLine} size="small" /> */}
                         </Link>
                     </Menu.Item>
                     <Menu.Menu position="right">
