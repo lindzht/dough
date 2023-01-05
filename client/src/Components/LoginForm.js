@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import { Header, Container, Form, Input, Button } from 'semantic-ui-react';
+import { Divider, Header, Container, Form, Input, Button, Image, Segment } from 'semantic-ui-react';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
+import DoughLine from '../images/DoughLine.png';
 
 
 function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
@@ -59,7 +60,11 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
 if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} navigate={navigate}/>
     return(
         <div id="login-container">
-            <div>
+            <div className="login-header">
+                <Image src={DoughLine} size="large"/>
+            </div>
+            <br/>
+            <div className="login-header">
                 <Header size="huge">Please Login!</Header>
             </div>
             <Container id="login-form"> 
@@ -80,8 +85,12 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                         value={user.password}
                         onChange={handleChange}
                     />
-                    <Form.Button type="submit">Login</Form.Button>  
+                    <Form.Button type="submit">Login</Form.Button> 
+                    
+                    <Divider horizontal>Or</Divider>
+                    
                     Don't have an account?
+                    <br/>
                     <br/>
                     <Button onClick={handleSignupFormDisplay}>Sign Up</Button>
                     <div id="errors-container">

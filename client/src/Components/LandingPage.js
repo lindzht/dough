@@ -1,4 +1,4 @@
-import { Header, Button, Container, Image } from 'semantic-ui-react';
+import { Divider, Header, Button, Container, Image, Segment, Grid } from 'semantic-ui-react';
 import LoginForm from './LoginForm';
 import DoughLine from '../images/DoughLine.png';
 import DoughDoughnut from '../images/DoughDoughnut.png';
@@ -8,6 +8,28 @@ import { Link } from 'react-router-dom';
 
 
 function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentUser, setErrors, errors}){
+
+    const LoginOrSignup = () => {
+        return (
+            <Container>
+                <Segment>
+                    <Grid columns={2} relaxed="very" stackable>
+                        <Grid.Column>
+                            <Link to="/login">
+                                <Button content="Signup you Doingus!" icon="signup"/>
+                            </Link>
+                        </Grid.Column>
+                        <Grid.Column verticalAlign="middle">
+                            <Link to="/login">
+                                <Button>Go fucking login!</Button>
+                            </Link>
+                        </Grid.Column>
+                    </Grid>
+                    <Divider vertical>Or</Divider>
+                </Segment>
+            </Container>
+        )
+    }
 
     return (
         <div className="App">
@@ -30,7 +52,7 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
             <div> 
                 <Header>You from around these parts?</Header>  
                 {/* {!currentUser ? <Link to="/login"><Button>Go fucking login!</Button></Link> : <h4>Oh shit you're logged! Let's redirect you to other components somehow</h4> } */}
-                {!currentUser ? <Link to="/login"><Button>Go fucking login!</Button></Link> : <Link to="/dashboard"><Button>Get me to my details!</Button></Link> }
+                {!currentUser ? <LoginOrSignup/> : <Link to="/dashboard"><Button>Get me to my details!</Button></Link> }
                 {displayForms ? <LoginForm handleDisplayForm={handleDisplayForm} setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/> : null }
             </div>
             <br/>
