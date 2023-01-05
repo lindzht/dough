@@ -12,6 +12,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 </option>
             )
     })
+    // console.log(categories)
 
     // Form to track new expense details
     const [expense, setExpense] = useState({
@@ -49,6 +50,14 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 res.json().then(console.log(errors))
             }
         })
+
+        //will clear form
+        setExpense({
+            item: "",
+            cost: 0,
+            category_id: ""
+        })
+
     }
 
     return(

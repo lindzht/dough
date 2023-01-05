@@ -72,8 +72,6 @@ function App() {
   }, [newCategory, updatedCategories]);
 
 
-
-
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
 }
