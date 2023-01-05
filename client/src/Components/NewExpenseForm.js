@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
 
 function NewExpenseForm ({setErrors, errors, categories}){
-
+    let navigate = useNavigate();
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
             return (
@@ -61,6 +62,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
 
     return(
         <div id="new-expense-form-container">
+            <h1>Add a new expense!</h1>
             <form onSubmit={handleNewExpense}>
                 <label>Item</label>
                 <input
@@ -93,8 +95,10 @@ function NewExpenseForm ({setErrors, errors, categories}){
                     <option value="">Select</option>
                     {handleCategories}
                 </select>
+                <h4 onClick={()=> {navigate('/categories');}}>Don't see the category you want? Add a new one yo!</h4>
                 {/* Note:<input></input> */}
                 {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
+                <br />
                 <input type="submit" value="Submit"></input>
                 <div id="errors-container">
                     {errors ? 

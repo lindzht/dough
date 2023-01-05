@@ -26,7 +26,7 @@ function App() {
     cat_type: ""
   })
 
-  console.log(updatedCategories)
+
 
   //STAY LOGGED IN:
   useEffect(() => {
@@ -65,25 +65,12 @@ function App() {
       if(res.ok){
         res.json()
         .then(data => {
-          setCategories(data)  
+          setCategories(data)
         })
       }
     })
   }, [newCategory, updatedCategories]);
 
-
-
-  useEffect(() => {
-    fetch("/categories")
-    .then(res => {
-      if(res.ok){
-        res.json()
-        .then(data => {
-          setCategories(data)  
-        })
-      }
-    })
-  }, [newCategory]);
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)

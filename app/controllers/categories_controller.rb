@@ -4,18 +4,22 @@ class CategoriesController < ApplicationController
     skip_before_action :authorized, only: [:index]
 
     def index
-        user = find_user
-        render json: Category.all, status: :ok
+        user = User.find(session[:user_id])
+        render json: user.categories, status: :ok
     end
 
     def create 
-        category = Category.create!(category_params)
-        render json: category, status: :created
+        user = find_user
+        cat = user.categories.create(category_params)
+        # category = Category.create!(category_params)
+        render json: cat, status: :created
     end
 
     def update
-        user = find_user
-        subcategory = user.categories.find_by(category_name: params[:id])
+        # byebug
+        # user = find_user
+        # subcategory = user.categories.find_by(category_name: params[:id])
+        subcategory = Category.find_by(category_name: params[:id])
         subcategory.update(category_name: params[:category_name])
         render json: subcategory, status: :ok
     end
@@ -34,7 +38,7 @@ class CategoriesController < ApplicationController
     def destroy
         category = Category.find(params[:id])
         category.destroy
-        head :no_content
+        render json: category, status: :ok
     end
 
     private

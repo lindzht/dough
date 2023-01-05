@@ -1,11 +1,13 @@
 import {useState} from 'react'
 import { List, Icon, Button, Form, Input} from 'semantic-ui-react'
+import Modal from './Modal';
 
 
 function CategoryListItem ({category, setUpdatedCategories, allCategories}) {
     
     const [displayForms, setDisplayForms] = useState(false);
     const [updateCategory, setUpdateCategory] = useState({category_name: category.category_name});
+    const [show, setShow] = useState(false)
 
     function displayEditInput () {
         setDisplayForms(!displayForms)
@@ -33,7 +35,7 @@ function CategoryListItem ({category, setUpdatedCategories, allCategories}) {
           })
           .then(res => {
             if(res.ok){
-                res.json().then(data => {setUpdatedCategories([...allCategories, data])})
+                res.json().then(data => {setUpdatedCategories([...allCategories, data]); console.log(data)} )
             } 
             else {
                 res.json().then(console.log("no good"))
@@ -44,22 +46,35 @@ function CategoryListItem ({category, setUpdatedCategories, allCategories}) {
       
 
       const handleDeleteCategorySubmit = () => {  
-            const id = category.id
-            fetch(`/categories/${id}`, {
-              method: "DELETE",
+        const id = category.id
+        fetch(`/categories/${id}`, {
+            method: "DELETE"
             })
-              .then((r) => r.json())
-              .then((newData) => console.log("worked", newData));
+            .then(res => {
+                if(res.ok){
+                    res.json().then(data => {
+                        setUpdatedCategories(data);   
+                    }) 
+                } else {
+                    res.json().then(console.log("no good"))
+                }
+            })
         }
+
+        function handleShow () {
+            setShow(!show)
+        }
+          
 
     return (
         <>
+        
         { displayForms ? 
         <List divided verticalAlign='middle' key={category.id}>
             <List.Item>
                 <List.Content floated ='right'>
                 <Button onClick={displayEditInput}><Icon name='pencil'/>Edit</Button>
-                <Button onClick={handleDeleteCategorySubmit}><Icon name='trash alternate' /></Button>
+                <Button onClick={handleShow}><Icon name='trash alternate' /></Button>
                 </List.Content>
                 <List.Content>
                     <form onSubmit={handleEditCategorySubmit}>
@@ -79,7 +94,7 @@ function CategoryListItem ({category, setUpdatedCategories, allCategories}) {
             <List.Item>
             <List.Content floated ='right'>
                 <Button onClick={displayEditInput} ><Icon name='pencil'/>Edit</Button>
-                <Button onClick={handleDeleteCategorySubmit}><Icon name='trash alternate' /></Button>
+                {show ? <Modal handleDeleteCategorySubmit={handleDeleteCategorySubmit}/> : <Button onClick={handleShow}><Icon name='trash alternate' /></Button> }
             </List.Content>
             <List.Content>
                 {category.category_name}
