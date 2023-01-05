@@ -10,6 +10,7 @@ import Savings from './Components/Savings';
 import Categories from './Components/Categories';
 import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
+import SignupForm from './Components/SignupForm';
 
 
 function App() {
@@ -91,7 +92,7 @@ return (
             />
           }>
           <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
-          <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="dashboard" element={<Dashboard currentUser={currentUser} expenses={expenses}/>}/>
 
           <Route path="expenses" element={<AllExpenses expenses={expenses} setErrors={setErrors} errors={errors} />}/>
 
@@ -113,6 +114,7 @@ return (
             errors={errors} 
             handleDisplayForm={handleDisplayForm} />
             } />
+            <Route path="signup" element={<SignupForm setErrors={setErrors} errors={errors}/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
