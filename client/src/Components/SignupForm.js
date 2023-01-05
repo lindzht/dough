@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Divider, Header, Image, Form, Input, Button, Container } from 'semantic-ui-react';
 import DoughLine from '../images/DoughLine.png';
-import LoginForm from './LoginForm';
+// import LoginForm from './LoginForm';
 
 function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 

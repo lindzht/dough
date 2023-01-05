@@ -60,7 +60,7 @@ return (
             />
           }>
           <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
-          <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="dashboard" element={<Dashboard currentUser={currentUser} expenses={expenses}/>}/>
 
           <Route path="expenses" element={<AllExpenses expenses={expenses} setErrors={setErrors} errors={errors} />}/>
 
