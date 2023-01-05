@@ -1,13 +1,7 @@
-import { UNSAFE_getPathContributingMatches } from "@remix-run/router";
-import { Container, Header, Table } from "semantic-ui-react";
+import { Divider, Container, Grid, Header, Segment, Table, Button } from "semantic-ui-react";
 
 
 function Dashboard ({expenses, currentUser}){
-
-    console.log(currentUser)
-
-//    const {username, name, income} = currentUser
-
 
 
     const miniExpenseArray = expenses.slice(0,5).map((ex)=>{
@@ -27,26 +21,57 @@ function Dashboard ({expenses, currentUser}){
     });
 
 
+
     return(
         <div>
-            <h1>This is your dashboard fucker!</h1>
-            <div>
-                <Container>
-                    <Header>Recent Expenses</Header>
-                    <Table>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Item</Table.HeaderCell>
-                                <Table.HeaderCell>Cost</Table.HeaderCell>
-                                <Table.HeaderCell>Date</Table.HeaderCell>
-                                <Table.HeaderCell>Category</Table.HeaderCell>
-                                <Table.HeaderCell>Type</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        {miniExpenseArray}
-                    </Table>
-                </Container>
+            <div id="dash-div-head-container">
+                <div className="dash-header">
+                    <h1>This is your dashboard {currentUser && currentUser.name}!</h1>
+                </div>
+                <div className="dash-header">
+                    <h1>Your Monthly Income:</h1>
+                </div>
+                <div className="dash-header">
+                    <h1>${currentUser && currentUser.income}</h1>
+                </div>
             </div>
+            <Grid container columns={2} divided>
+                <Grid.Row stretched>
+                    <Grid.Column>
+                        <Segment>
+                            <div>
+                                <Container>
+                                    <Header>Recent Expenses</Header>
+                                    <Table>
+                                        <Table.Header>
+                                            <Table.Row>
+                                                <Table.HeaderCell>Item</Table.HeaderCell>
+                                                <Table.HeaderCell>Cost</Table.HeaderCell>
+                                                <Table.HeaderCell>Date</Table.HeaderCell>
+                                                <Table.HeaderCell>Category</Table.HeaderCell>
+                                                <Table.HeaderCell>Type</Table.HeaderCell>
+                                            </Table.Row>
+                                        </Table.Header>
+                                        {miniExpenseArray}
+                                    </Table>
+                                </Container>
+                            </div>
+                        </Segment>
+                    </Grid.Column>
+                    <Grid.Column textAlign="center">                         
+                        <Segment>
+                            <br/>
+                            <u><Header position="middle" as='h3'>Accumulated Expenses This Month:</Header></u>
+                            <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>                    
+                        </Segment>                          
+                        <Segment>
+                            2
+                        </Segment>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+
+
         </div>
     )
 };

@@ -3,4 +3,6 @@ class ExpenseSerializer < ActiveModel::Serializer
 
   has_one :user
   has_one :category
+
 end
+

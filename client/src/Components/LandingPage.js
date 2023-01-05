@@ -40,7 +40,7 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
             <div id="LandingLogo">
             <Image src={DoughDoughnut} size='large'/>
             </div>
-            <h1>SUP {currentUser? currentUser.username : "STRANGER"}</h1>
+            <h1>SUP {currentUser? currentUser && currentUser.name : "STRANGER"}</h1>
             <Container>
                 <h4>Dough is a budgetting app that helps you keep track of your expenses month to month. We base our budget formula off of the 50/30/20 Model. Not familiar with the 50/30/20 Model, <a href="https://www.britannica.com/money/what-is-the-50-30-20-rule">well check this out!</a></h4>
 

@@ -25,15 +25,15 @@ function Nav ({currentUser, handleDisplayForm, setCurrentUser, handleLogOut}) {
                         <Link to="/dashboard">
                             <Dropdown.Item text='Dashboard'/>
                         </Link>
-                        <Link to="/prev">
+                        {/* <Link to="/prev">
                             <Dropdown.Item text='Previous Month'/>
-                        </Link>
+                        </Link> */}
                         <Link to="/categories">
                             <Dropdown.Item text='Categories'/>
                         </Link>
-                        <Link to="/savings">
+                        {/* <Link to="/savings">
                             <Dropdown.Item text='Savings'/>
-                        </Link>
+                        </Link> */}
                         <Link to="/new">
                             <Dropdown.Item text='Add New Expense'/>
                         </Link>
