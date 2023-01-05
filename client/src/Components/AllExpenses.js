@@ -3,7 +3,7 @@ import ExpenseItem from './ExpenseItem';
 
 function AllExpenses({expenses}) {
 
-    console.log(expenses)
+    // console.log(expenses)
     const expenseArray = expenses.map((eachExpense) => {
         return( <ExpenseItem key={eachExpense.id} {...eachExpense}/>)
     })
