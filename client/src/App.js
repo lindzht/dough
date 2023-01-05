@@ -29,7 +29,7 @@ function App() {
         res.json()
         .then(user => {
           setCurrentUser(user)
-          console.log(currentUser)
+          // console.log(currentUser)
         })
       }
     });
