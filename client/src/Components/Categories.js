@@ -6,22 +6,8 @@ import CategoryListItem from './CategoryListItem';
 function Categories({setErrors, errors, categories, setNewCategories, newCategory, setNewCategory}){
 
     const [displayForms, setDisplayForms] = useState(false);
+    const [updatedCategories, setUpdatedCategories] = useState(categories);
 
-
-    useEffect(() => {
-        fetch("/categories")
-        .then(res => {
-          if(res.ok){
-            res.json()
-            .then(data => {
-              setCategories(data)  
-            })
-          }
-        })
-      }, [newCategory]);
-
-
-    
 
     const funSubCategories = categories.map((c) => {
       if (c.cat_type === "Fun"){
