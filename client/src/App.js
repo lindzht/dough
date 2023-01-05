@@ -11,6 +11,7 @@ import Categories from './Components/Categories';
 import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
 import SignupForm from './Components/SignupForm';
+import NotFound from './Components/NotFound';
 
 
 function App() {
@@ -114,6 +115,7 @@ return (
             handleDisplayForm={handleDisplayForm} />
             } />
             <Route path="signup" element={<SignupForm setErrors={setErrors} errors={errors}/>}/>
+            <Route path="*" element={<NotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>
