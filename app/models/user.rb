@@ -7,4 +7,10 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true
     validates :name, presence: true
+
+    def self.find_categorynames
+        self.categories.where(category_name: params[:category_name])
+    end
+
+
 end

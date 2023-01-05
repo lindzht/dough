@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :expenses, only: [:create]
-  resources :categories, only: [:create, :index]
+  resources :expenses, only: [:create, :index]
+  resources :categories, only: [:create, :index, :update, :show]
   resources :users
 
   post "/signup", to: "users#create"
