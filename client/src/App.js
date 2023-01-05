@@ -10,6 +10,7 @@ import Savings from './Components/Savings';
 import Categories from './Components/Categories';
 import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
+import SignupForm from './Components/SignupForm';
 
 
 function App() {
@@ -74,6 +75,7 @@ return (
             errors={errors} 
             handleDisplayForm={handleDisplayForm} />
             } />
+            <Route path="signup" element={<SignupForm setErrors={setErrors} errors={errors}/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

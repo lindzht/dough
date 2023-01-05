@@ -1,6 +1,8 @@
 import {useState} from 'react';
+import { Link } from 'react-router-dom';
 import { Divider, Header, Image, Form, Input, Button, Container } from 'semantic-ui-react';
 import DoughLine from '../images/DoughLine.png';
+import LoginForm from './LoginForm';
 
 function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 
@@ -111,7 +113,9 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                         JK I have an account!
                         <br/>
                         <br/>
-                        <Button onClick={handleFormDisplay}>Login</Button>
+                        <Link to="/login">
+                            <Button onClick={handleFormDisplay}>Login</Button>
+                        </Link>
                         <div id="errors-container">
                             {errors ? errors.map(e => {
                                 return <p key={e}>{e}</p>
