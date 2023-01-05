@@ -32,8 +32,7 @@ class CategoriesController < ApplicationController
     end
 
     def destroy
-        byebug
-        category = Category.find_by(category_name: params[:category_name])
+        category = Category.find(params[:id])
         category.destroy
         head :no_content
     end

@@ -15,7 +15,7 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
                 <Segment>
                     <Grid columns={2} relaxed="very" stackable>
                         <Grid.Column>
-                            <Link to="/login">
+                            <Link to="/signup">
                                 <Button content="Signup you Doingus!" icon="signup"/>
                             </Link>
                         </Grid.Column>

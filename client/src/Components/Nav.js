@@ -6,25 +6,10 @@ import LoginForm from './LoginForm'
 import DoughLine from '../images/DoughLine.png';
 import DoughDoughnut from '../images/DoughDoughnut.png';
 import DoughArc from '../images/DoughArc.png';
-import { useNavigate } from 'react-router-dom';
-
-function Nav ({currentUser, handleDisplayForm, setCurrentUser}) {
 
 
-    let navigate = useNavigate();
+function Nav ({currentUser, handleDisplayForm, setCurrentUser, handleLogOut}) {
     
-    //LOGOUT: 
-    const handleLogOut =()=> {
-        fetch("/logout", {
-        method: "DELETE"
-        })
-        .then(res => {
-        if(res.ok) {
-            setCurrentUser(null)
-            navigate('/');
-        }
-        })
-    }
 
     const HiddenNav = () => {
         return (
