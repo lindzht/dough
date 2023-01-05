@@ -60,9 +60,9 @@ function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
                  <> 
                     <Menu.Item>
                         <Link to="/">
-                            <Image src={DoughDoughnut} size="tiny" />
+                            {/* <Image src={DoughDoughnut} size="tiny" /> */}
                             {/* <Image src={DoughArc} size="small" /> */}
-                            {/* <Image src={DoughLine} size="small" /> */}
+                            <Image src={DoughLine} size="small" />
                         </Link>
                     </Menu.Item>
                     <Menu.Menu position="right">

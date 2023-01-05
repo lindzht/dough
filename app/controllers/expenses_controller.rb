@@ -5,7 +5,8 @@ class ExpensesController < ApplicationController
 
 
     def index 
-        render json: Expense.all, status: :ok
+        user = find_user
+        render json: user.expenses, status: :ok
     end
 
     def create
@@ -20,5 +21,9 @@ class ExpensesController < ApplicationController
     def expense_params
         # need to add id bc it belongs to user and category
         params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
+    end
+
+    def find_user
+        User.find(session[:user_id])
     end
 end
