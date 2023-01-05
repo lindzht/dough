@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
-function NewExpenseForm ({setErrors, errors}){
+function NewExpenseForm ({setErrors, errors, categories}){
     // fetches categories to render in dropdown menu. consider fetching in app
-    const [categories, setCategories] = useState([])
-    useEffect(() => {
-        fetch("/categories")
-        .then(res => res.json())
-        .then(setCategories)
-    }, [])
+    // const [categories, setCategories] = useState([])
+    // useEffect(() => {
+    //     fetch("/categories")
+    //     .then(res => res.json())
+    //     .then(setCategories)
+    // }, [])
 
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
@@ -18,6 +18,7 @@ function NewExpenseForm ({setErrors, errors}){
                 </option>
             )
     })
+    // console.log(categories)
 
     // Form to track new expense details
     const [expense, setExpense] = useState({

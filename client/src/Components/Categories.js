@@ -3,16 +3,10 @@ import CategoriesForm from "./CategoriesForm";
 import { List, Icon, Button, Label, Menu, Tab, Form, Input, Container} from 'semantic-ui-react'
 import CategoryListItem from './CategoryListItem';
 
-function Categories({setErrors, errors}){
+function Categories({setErrors, errors, categories, setNewCategories, newCategory, setNewCategory}){
 
-    const [categories, setCategories] = useState([]);
-    const [updatedCategories, setUpdatedCategories] = useState(categories);
-    const [newCategory, setNewCategory] = useState({
-      category_name: "",
-      cat_type: ""
-  })
+    const [displayForms, setDisplayForms] = useState(false);
 
-    console.log(updatedCategories);
 
     useEffect(() => {
         fetch("/categories")

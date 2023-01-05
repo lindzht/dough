@@ -18,6 +18,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [displayForms, setDisplayForms ] = useState(false)
   const [expenses, setExpenses] = useState([])
+  const [categories, setCategories] = useState([]);
+  const [newCategory, setNewCategory] = useState({
+    category_name: "",
+    cat_type: ""
+})
+console.log(categories)
 
   // const navigate = useNavigate();
 
@@ -40,6 +46,18 @@ function App() {
   }, []);
 
 
+
+  useEffect(() => {
+    fetch("/categories")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          setCategories(data)  
+        })
+      }
+    })
+  }, [newCategory]);
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
@@ -64,9 +82,20 @@ return (
           <Route path="expenses" element={<AllExpenses expenses={expenses} setErrors={setErrors} errors={errors} />}/>
 
           <Route path="prev" element={<PrevMonth />}/>
-          <Route path="categories" element={<Categories setErrors={setErrors}  errors={errors} />}/>
+          <Route path="categories" element={<Categories 
+            setErrors={setErrors}  
+            errors={errors} 
+            categories={categories} 
+            setCategories={setCategories}
+            newCategory={newCategory}
+            setNewCategory={setNewCategory}
+            />}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm />}/>
+          <Route path="new" element={<NewExpenseForm 
+            setErrors={setErrors}  
+            errors={errors} 
+            categories={categories} 
+          />}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}
