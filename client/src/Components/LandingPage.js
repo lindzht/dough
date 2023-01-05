@@ -29,7 +29,8 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
 
             <div> 
                 <Header>You from around these parts?</Header>  
-                {!currentUser ? <Link to="/login"><Button>Go fucking login!</Button></Link> : <h4>Oh shit you're logged! Let's redirect you to other components somehow</h4> }
+                {/* {!currentUser ? <Link to="/login"><Button>Go fucking login!</Button></Link> : <h4>Oh shit you're logged! Let's redirect you to other components somehow</h4> } */}
+                {!currentUser ? <Link to="/login"><Button>Go fucking login!</Button></Link> : <Link to="/dashboard"><Button>Get me to my details!</Button></Link> }
                 {displayForms ? <LoginForm handleDisplayForm={handleDisplayForm} setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/> : null }
             </div>
             <br/>
