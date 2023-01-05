@@ -2,14 +2,15 @@ import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
 function NewExpenseForm ({setErrors, errors}){
+    // fetches categories to render in dropdown menu. consider fetching in app
     const [categories, setCategories] = useState([])
     useEffect(() => {
         fetch("/categories")
         .then(res => res.json())
         .then(setCategories)
     }, [])
-    console.log(categories)
 
+    // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
             return (
                 <option value={c.id} key={c.id}>
@@ -27,7 +28,8 @@ function NewExpenseForm ({setErrors, errors}){
         category_id: ""
         // note: ""
     })
-    console.log(expense)
+    
+    
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
