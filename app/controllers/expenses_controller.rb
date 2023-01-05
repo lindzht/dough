@@ -4,8 +4,10 @@ class ExpensesController < ApplicationController
     skip_before_action :authorized, only: [:create, :index, :destroy]
 
 
-    def index 
-        render json: Expense.all, status: :ok
+    def index
+        user = find_user
+        # Using active record associations
+        render json: user.expenses, status: :ok
     end
 
     def create
@@ -16,7 +18,7 @@ class ExpensesController < ApplicationController
     end
 
     def destroy
-        byebug
+        # byebug
         expense = Expense.find(params[:id])
         expense.destroy
         head :no_content
@@ -33,5 +35,9 @@ class ExpensesController < ApplicationController
     def expense_params
         # need to add id bc it belongs to user and category
         params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
+    end
+
+    def find_user
+        User.find(session[:user_id])
     end
 end
