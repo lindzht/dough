@@ -61,11 +61,12 @@ function Dashboard ({expenses, currentUser}){
                     <Grid.Column textAlign="center">                         
                         <Segment>
                             <br/>
-                            <u><Header position="middle" as='h3'>Accumulated Expenses This Month:</Header></u>
-                            <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>                    
+                            <u><Header position="middle" as='h3'>Monthly Income:</Header></u>
+                            <p className="dash-h1">${currentUser && currentUser.income}</p>               
                         </Segment>                          
                         <Segment>
-                            2
+                            <u><Header position="middle" as='h3'>Accumulated Expenses This Month:</Header></u>
+                            <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   
                         </Segment>
                     </Grid.Column>
                 </Grid.Row>
