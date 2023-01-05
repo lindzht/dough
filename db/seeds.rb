@@ -13,6 +13,8 @@ c6 = Category.create(category_name: "Travel", cat_type: "Fun")
 c7 = Category.create(category_name: "Dining", cat_type: "Fun")
 c8 = Category.create(category_name: "Streaming Service", cat_type: "Fun")
 c9 = Category.create(category_name: "Entertainment", cat_type: "Fun")
+c10 = Category.create(category_name: "Undefined", cat_type: "Undefined" )
+
 
 
 

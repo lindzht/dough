@@ -3,59 +3,36 @@ import CategoriesForm from "./CategoriesForm";
 import { List, Icon, Button, Label, Menu, Tab, Form, Input, Container} from 'semantic-ui-react'
 import CategoryListItem from './CategoryListItem';
 
-function Categories({setErrors, errors}){
-
-    const [categories, setCategories] = useState([]);
-    const [updatedCategories, setUpdatedCategories] = useState(categories);
-    const [newCategory, setNewCategory] = useState({
-      category_name: "",
-      cat_type: ""
-  })
-
-    console.log(updatedCategories);
-
-    useEffect(() => {
-        fetch("/categories")
-        .then(res => {
-          if(res.ok){
-            res.json()
-            .then(data => {
-              setCategories(data)  
-            })
-          }
-        })
-      }, [newCategory]);
+function Categories({setErrors, errors, newCategory, setNewCategory, allCategories, setCategories, setUpdatedCategories}){
 
 
-    
-
-    const funSubCategories = categories.map((c) => {
+    const funSubCategories = allCategories.map((c) => {
       if (c.cat_type === "Fun"){
         return (
-          <CategoryListItem categories={categories} setUpdatedCategories={setUpdatedCategories} category={c}/>
+          <CategoryListItem allCategories={allCategories} setUpdatedCategories={setUpdatedCategories} category={c}/>
         );
       }
     });
 
-    const necSubCategories = categories.map((c) => {
+    const necSubCategories = allCategories.map((c) => {
       if (c.cat_type === "Necessary"){
         return (
-          <CategoryListItem categories={categories} setUpdatedCategories={setUpdatedCategories} category={c}/>
+          <CategoryListItem allCategories={allCategories} setUpdatedCategories={setUpdatedCategories} category={c}/>
         );
       }
     });
 
-    const savSubCategories = categories.map((c) => {
+    const savSubCategories = allCategories.map((c) => {
       if (c.cat_type === "Savings"){
         return (
-          <CategoryListItem categories={categories} setUpdatedCategories={setUpdatedCategories} category={c}/>
+          <CategoryListItem allCategories={allCategories} setUpdatedCategories={setUpdatedCategories} category={c}/>
         );
       }
     });
 
-    const funFilter = categories.filter((c) => {if (c.cat_type === "Fun") {return (c)}})
-    const necFilter = categories.filter((c) => {if (c.cat_type === "Necessary") {return (c)}})
-    const savFilter = categories.filter((c) => {if (c.cat_type === "Savings") {return (c)}})
+    const funFilter = allCategories.filter((c) => {if (c.cat_type === "Fun") {return (c)}})
+    const necFilter = allCategories.filter((c) => {if (c.cat_type === "Necessary") {return (c)}})
+    const savFilter = allCategories.filter((c) => {if (c.cat_type === "Savings") {return (c)}})
     
 
     const panes = [

@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { List, Icon, Button, Form, Input} from 'semantic-ui-react'
 
 
-function CategoryListItem ({category, setUpdatedCategories, categories}) {
+function CategoryListItem ({category, setUpdatedCategories, allCategories}) {
     
     const [displayForms, setDisplayForms] = useState(false);
     const [updateCategory, setUpdateCategory] = useState({category_name: category.category_name});
@@ -33,7 +33,7 @@ function CategoryListItem ({category, setUpdatedCategories, categories}) {
           })
           .then(res => {
             if(res.ok){
-                res.json().then(data => {setUpdatedCategories([...categories, data])})
+                res.json().then(data => {setUpdatedCategories([...allCategories, data])})
             } 
             else {
                 res.json().then(console.log("no good"))
@@ -41,14 +41,15 @@ function CategoryListItem ({category, setUpdatedCategories, categories}) {
         })   
       }
 
+      
+
       const handleDeleteCategorySubmit = () => {  
-            const name = updateCategory.category_name;
-            console.log(name)
-            // fetch(`/categories/${name}`, {
-            //   method: "DELETE",
-            // })
-            //   .then((r) => r.json())
-            //   .then((newData) => console.log("worked", newData));
+            const id = category.id
+            fetch(`/categories/${id}`, {
+              method: "DELETE",
+            })
+              .then((r) => r.json())
+              .then((newData) => console.log("worked", newData));
         }
 
     return (
@@ -78,7 +79,7 @@ function CategoryListItem ({category, setUpdatedCategories, categories}) {
             <List.Item>
             <List.Content floated ='right'>
                 <Button onClick={displayEditInput} ><Icon name='pencil'/>Edit</Button>
-                <Button><Icon name='trash alternate' /></Button>
+                <Button onClick={handleDeleteCategorySubmit}><Icon name='trash alternate' /></Button>
             </List.Content>
             <List.Content>
                 {category.category_name}
