@@ -18,6 +18,7 @@ function AllExpenses({expenses}) {
                             <Table.HeaderCell>Item</Table.HeaderCell>
                             <Table.HeaderCell>Cost</Table.HeaderCell>
                             <Table.HeaderCell>Date</Table.HeaderCell>
+                            <Table.HeaderCell>Category</Table.HeaderCell>
                             <Table.HeaderCell>Edit</Table.HeaderCell>
                             <Table.HeaderCell>Delete</Table.HeaderCell>
                             {/* <Table.HeaderCell>Change</Table.HeaderCell> */}

@@ -2,7 +2,7 @@ import { Table } from "semantic-ui-react";
 import {useParams} from "react-router-dom";
 
 
-function ExpenseItem({id, item, cost, date_of_expense}) {
+function ExpenseItem({id, item, cost, date_of_expense, category}) {
     // const {id} = useParams();
     // const i = id
     const handleDelete = () => {
@@ -26,6 +26,7 @@ function ExpenseItem({id, item, cost, date_of_expense}) {
                     <Table.Cell>{item}</Table.Cell>
                     <Table.Cell>${cost}</Table.Cell>
                     <Table.Cell>{date_of_expense}</Table.Cell>
+                    <Table.Cell>{category.category_name}</Table.Cell>
                     <Table.Cell>
                         <div className="mini ui icon button">
                             <i className="pencil alternate icon" onClick={handleEdit}></i>

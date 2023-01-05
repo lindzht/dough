@@ -49,6 +49,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 res.json().then(console.log(errors))
             }
         })
+        
     }
 
     return(

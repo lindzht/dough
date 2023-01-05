@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
     def index
         user = find_user
-        render json: user.categories, status: :ok
+        render json: Category.all, status: :ok
     end
 
     def create 
