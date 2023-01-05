@@ -58,6 +58,7 @@ function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
                         <option value="Fun">Fun</option>
                         <option value="Necessary">Necessary</option>
                         <option value="Savings">Savings</option>
+                        <option value="N/A">N/A</option>
                     </select>
                     <br/>      
                     <Button>Submit</Button>

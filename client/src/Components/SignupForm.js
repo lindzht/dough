@@ -50,6 +50,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
     }
 
 
+
     return(
 
         <div id="signup-container">

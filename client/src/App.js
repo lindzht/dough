@@ -18,8 +18,14 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [displayForms, setDisplayForms ] = useState(false)
   const [expenses, setExpenses] = useState([])
+  const [categories, setCategories] = useState([]);
+  const [updatedCategories, setUpdatedCategories] = useState([]);
+  const [newCategory, setNewCategory] = useState({
+    category_name: "",
+    cat_type: ""
+  })
 
-  // const navigate = useNavigate();
+  console.log(updatedCategories)
 
   //STAY LOGGED IN:
   useEffect(() => {
@@ -39,6 +45,31 @@ function App() {
     .then(setExpenses)
   }, []);
 
+    //LOGOUT: 
+    const handleLogOut =()=> {
+      fetch("/logout", {
+      method: "DELETE"
+      })
+      .then(res => {
+      if(res.ok) {
+          setCurrentUser(null)
+      }
+      })
+  }
+
+  //FETCH CATEGORIES FOR USER
+  useEffect(() => {
+    fetch("/categories")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          setCategories(data)  
+        })
+      }
+    })
+  }, [newCategory, updatedCategories]);
+
 
 
   const handleDisplayForm = ()=> {
@@ -56,6 +87,7 @@ return (
             errors={errors} 
             handleDisplayForm={handleDisplayForm}
             setCurrentUser={setCurrentUser}
+            handleLogOut={handleLogOut}
             />
           }>
           <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
@@ -64,9 +96,16 @@ return (
           <Route path="expenses" element={<AllExpenses expenses={expenses} setErrors={setErrors} errors={errors} />}/>
 
           <Route path="prev" element={<PrevMonth />}/>
-          <Route path="categories" element={<Categories setErrors={setErrors}  errors={errors} />}/>
+          <Route path="categories" element={<Categories 
+            setErrors={setErrors}  
+            errors={errors} 
+            newCategory={newCategory} 
+            setNewCategory={setNewCategory}
+            allCategories={categories}
+            setCategories={setCategories}
+            setUpdatedCategories={setUpdatedCategories}/>}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm />}/>
+          <Route path="new" element={<NewExpenseForm categories={categories}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}
