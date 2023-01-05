@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
     
     wrap_parameters format: []
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:create, :index, :destroy]
 
 
     def index 
@@ -16,9 +16,14 @@ class ExpensesController < ApplicationController
     end
 
     def destroy
+        byebug
         expense = Expense.find(params[:id])
         expense.destroy
         head :no_content
+    end
+
+    def update
+
     end
 
     private

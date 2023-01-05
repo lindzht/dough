@@ -1,8 +1,20 @@
 import { Table } from "semantic-ui-react";
+import {useParams} from "react-router-dom";
 
 
-function ExpenseItem({item, cost, date_of_expense}) {
+function ExpenseItem({id, item, cost, date_of_expense}) {
+    // const {id} = useParams();
+    // const i = id
+    const handleDelete = () => {
+        // console.log(i)
+        fetch(`/expenses/${id}`, {
+            method: "DELETE",
+        })
+    }
 
+    const handleEdit = () => {
+        console.log("edit")
+    }
 
     return (
         <>
@@ -11,8 +23,16 @@ function ExpenseItem({item, cost, date_of_expense}) {
                     <Table.Cell>{item}</Table.Cell>
                     <Table.Cell>${cost}</Table.Cell>
                     <Table.Cell>{date_of_expense}</Table.Cell>
-                    <Table.Cell><i class="pencil alternate icon"></i></Table.Cell>
-                    <Table.Cell><i class="trash icon"></i></Table.Cell>
+                    <Table.Cell>
+                        <div className="mini ui icon button">
+                            <i className="pencil alternate icon" onClick={handleEdit}></i>
+                        </div>
+                    </Table.Cell>
+                    <Table.Cell>
+                        <div className="mini ui icon button">
+                            <i className="trash icon" onClick={handleDelete}></i>
+                        </div>
+                    </Table.Cell>
                 </Table.Row>
             </Table.Body>
         </>

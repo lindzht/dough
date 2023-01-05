@@ -19,6 +19,7 @@ function AllExpenses({expenses}) {
                             <Table.HeaderCell>Date</Table.HeaderCell>
                             <Table.HeaderCell>Edit</Table.HeaderCell>
                             <Table.HeaderCell>Delete</Table.HeaderCell>
+                            {/* <Table.HeaderCell>Change</Table.HeaderCell> */}
                         </Table.Row>
                     </Table.Header>
                     {expenseArray}

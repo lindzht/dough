@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :expenses, only: [:create, :index, :destroy, :update]
+  resources :expenses, only: [:create, :index, :update, :destroy]
   resources :categories, only: [:create, :index]
   resources :users
 
@@ -13,10 +13,7 @@ Rails.application.routes.draw do
 
   get "/categories-summary", to: "categories#category_summary"
   
-  # adds new expense 
-  # post "/new-expense", to: "expenses#create"
-
-
+  # delete "expensebye", to: "expenses#destroy"
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
