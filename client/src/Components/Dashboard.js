@@ -11,7 +11,8 @@ function Dashboard ({expenses}){
                         <Table.Cell>{ex.item}</Table.Cell>
                         <Table.Cell>{ex.cost}</Table.Cell>
                         <Table.Cell>{ex.date_of_expense}</Table.Cell>
-                        <Table.Cell></Table.Cell>
+                        <Table.Cell>{ex.category.category_name}</Table.Cell>
+                        <Table.Cell>{ex.category.cat_type}</Table.Cell>
                     </Table.Row>
                 </Table.Body>
             </>
@@ -32,6 +33,7 @@ function Dashboard ({expenses}){
                                 <Table.HeaderCell>Cost</Table.HeaderCell>
                                 <Table.HeaderCell>Date</Table.HeaderCell>
                                 <Table.HeaderCell>Category</Table.HeaderCell>
+                                <Table.HeaderCell>Type</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         {miniExpenseArray}
