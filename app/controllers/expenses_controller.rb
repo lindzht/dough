@@ -4,6 +4,7 @@ class ExpensesController < ApplicationController
     skip_before_action :authorized, only: [:create, :index, :destroy]
 
 
+
     def index
         user = find_user
         # Using active record associations
