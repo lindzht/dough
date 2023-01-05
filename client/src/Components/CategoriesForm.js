@@ -1,10 +1,8 @@
 import {useEffect, useState} from 'react';
+import { Button} from 'semantic-ui-react'
 
 
-function CategoriesForm ({setErrors, errors, handleDisplayForm, newCategory, setNewCategory}) {
-
-
-   
+function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -17,7 +15,6 @@ function CategoriesForm ({setErrors, errors, handleDisplayForm, newCategory, set
             if(res.ok){
                 res.json().then(data => {
                     setNewCategory(data);
-                    handleDisplayForm();
                     setNewCategory({
                         category_name: "",
                         cat_type: "Select",
@@ -61,8 +58,9 @@ function CategoriesForm ({setErrors, errors, handleDisplayForm, newCategory, set
                         <option value="Fun">Fun</option>
                         <option value="Necessary">Necessary</option>
                         <option value="Savings">Savings</option>
-                    </select>      
-                    <input type="submit" value="Submit"></input>
+                    </select>
+                    <br/>      
+                    <Button>Submit</Button>
                     <div id="errors-container">
                         {errors ? 
                         errors.map(e => {

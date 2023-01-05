@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Divider, Header, Image, Form, Input, Button, Container } from 'semantic-ui-react';
 import DoughLine from '../images/DoughLine.png';
 
-function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm, navigate}) {
+function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 
     const [newUser, setNewUser] = useState({
         username: "",
@@ -24,7 +24,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
             if(res.ok){
                 res.json().then(setCurrentUser)
                 handleDisplayForm();
-                navigate('/');
+                // navigate('dashboard');
             } else {
                 res.json().then(data => setErrors(data.errors))
             }
@@ -53,7 +53,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
     return(
 
         <div id="signup-container">
-            <Container> 
+            <Container>
                 <div className="signup-header">
                     <Image src={DoughLine} size="large"/>
                 </div>
@@ -118,7 +118,6 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                             }) : null}
                         </div>
                     </Form>
-            
             </Container>
         </div>      
     )

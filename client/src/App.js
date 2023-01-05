@@ -29,7 +29,7 @@ function App() {
         res.json()
         .then(user => {
           setCurrentUser(user)
-          console.log(currentUser)
+          // console.log(currentUser)
         })
       }
     });
@@ -39,17 +39,7 @@ function App() {
     .then(setExpenses)
   }, []);
 
-  //LOGOUT: 
-  const handleLogOut =()=> {
-    fetch("/logout", {
-      method: "DELETE"
-    })
-    .then(res => {
-      if(res.ok) {
-        setCurrentUser(null)
-      }
-    })
-  }
+
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
@@ -64,8 +54,8 @@ return (
             currentUser={currentUser}
             setErrors={setErrors} 
             errors={errors} 
-            handleLogOut={handleLogOut}
             handleDisplayForm={handleDisplayForm}
+            setCurrentUser={setCurrentUser}
             />
           }>
           <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
@@ -82,7 +72,6 @@ return (
             currentUser={currentUser}
             setErrors={setErrors} 
             errors={errors} 
-            handleLogOut={handleLogOut}
             handleDisplayForm={handleDisplayForm} />
             } />
         </Route>

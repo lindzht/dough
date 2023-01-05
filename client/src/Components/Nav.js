@@ -1,12 +1,30 @@
-import {useState} from 'react'
+
 import { Outlet, Link } from 'react-router-dom';
+
 import { Dropdown, Image, Menu } from 'semantic-ui-react';
 import LoginForm from './LoginForm'
 import DoughLine from '../images/DoughLine.png';
 import DoughDoughnut from '../images/DoughDoughnut.png';
 import DoughArc from '../images/DoughArc.png';
+import { useNavigate } from 'react-router-dom';
 
-function Nav ({currentUser, handleLogOut, handleDisplayForm}) {
+function Nav ({currentUser, handleDisplayForm, setCurrentUser}) {
+
+
+    let navigate = useNavigate();
+    
+    //LOGOUT: 
+    const handleLogOut =()=> {
+        fetch("/logout", {
+        method: "DELETE"
+        })
+        .then(res => {
+        if(res.ok) {
+            setCurrentUser(null)
+            navigate('/');
+        }
+        })
+    }
 
     const HiddenNav = () => {
         return (

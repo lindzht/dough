@@ -1,11 +1,13 @@
 class ExpensesController < ApplicationController
     
     wrap_parameters format: []
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:create, :index, :destroy]
 
 
-    def index 
+
+    def index
         user = find_user
+        # Using active record associations
         render json: user.expenses, status: :ok
     end
 
@@ -14,6 +16,19 @@ class ExpensesController < ApplicationController
         params[:user_id] = session[:user_id]
         expense = Expense.create!(expense_params)
         render json: expense, status: :created
+    end
+
+    def destroy
+        # byebug
+        expense = Expense.find(params[:id])
+        expense.destroy
+        head :no_content
+    end
+
+    def update
+        expense = Expense.find(params[:id])
+        expense.update(expense_params)
+        render json: expense, status: :accepted
     end
 
     private

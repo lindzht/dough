@@ -1,6 +1,8 @@
 Category.destroy_all
 Expense.destroy_all
 
+puts "Seeding baby..."
+
 # cat_type options: Necessary, Fun, Savings
 c1 = Category.create(category_name: "Bills", cat_type: "Necessary")
 c2 = Category.create(category_name: "Housing", cat_type: "Necessary")
@@ -14,7 +16,7 @@ c9 = Category.create(category_name: "Entertainment", cat_type: "Fun")
 
 
 
-Expense.create(item: "Cell Phone Bill", cost: 50.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
+Expense.create(item: "Cell Phone Bill", cost: 50.00, date_of_expense: "01/01/01", user_id: 1, category_id: test.id )
 Expense.create(item: "Internet Bill", cost: 30.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
 Expense.create(item: "Electric Bill", cost: 70.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
 Expense.create(item: "Rent", cost: 1500.00, date_of_expense: "01/01/01", user_id: 1, category_id: c2.id )
@@ -33,3 +35,5 @@ Expense.create(item: "Olive Garden", cost: 38.50, date_of_expense: "01/01/01", u
 Expense.create(item: "Netflix", cost: 16.00, date_of_expense: "01/01/01", user_id: 1, category_id: c8.id )
 Expense.create(item: "Spotify", cost: 8.00, date_of_expense: "01/01/01", user_id: 1, category_id: c8.id )
 Expense.create(item: "Disney +", cost: 10.00, date_of_expense: "01/01/01", user_id: 1, category_id: c8.id )
+
+puts "I seeded!!!"
