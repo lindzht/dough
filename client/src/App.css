@@ -160,6 +160,13 @@
   border-radius: 3px;
 };
 
+#catform-container form select {
+  margin-bottom: 1em;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 3px;
+};
+
+
 #catform-container #submit {
   margin-top: 1em;
 }
@@ -178,4 +185,64 @@
 
 input {
   border: 1px solid rgb(189, 189, 189);
+  border-radius: 3px;
+}
+
+/* EXPENSE FORM  */
+
+#new-expense-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+#new-expense-form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 30%;
+  margin-top: 3em;
+  font-weight: bold;
+}
+
+#new-expense-form-container form input {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  height: 35px;
+}
+
+#new-expense-form-container form select {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  height: 35px;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+#new-expense-form-container form input[type=submit]:hover {
+  background-color: rgb(189, 189, 189);
+ }
+
+#new-expense-form-container form input[type=submit] {
+ background-color: rgb(219, 219, 219);
+ border: none;
+}
+
+#new-expense-form-container h1 {
+  font-style: italic;
+  margin: 1em 0 -0.01em 0;
+  font-size: 3em;
+}
+
+#new-expense-form-container h4 {
+  font-style: italic;
+  font-size: 1em;
+  color:rgb(99, 99, 99);
+  margin: 0 0 1em 0;
+}
+
+#new-expense-form-container h4:hover {
+  color:rgb(218, 155, 30);
 }

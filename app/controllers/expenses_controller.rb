@@ -7,8 +7,8 @@ class ExpensesController < ApplicationController
 
     def index
         user = find_user
-        # Using active record associations
-        render json: user.expenses.order("created_at DESC"), status: :ok
+        expenses = user.filter_expenses
+        render json: expenses, status: :ok
     end
 
     def create

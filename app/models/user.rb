@@ -12,5 +12,12 @@ class User < ApplicationRecord
         self.categories.where(category_name: params[:category_name])
     end
 
+    def filter_expenses
+       e = self.expenses.order("created_at DESC")
+       e.select do |expense|
+         expense[:item] != nil
+       end
+    end
+
 
 end
