@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 
-function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm, navigate}) {
+function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
 
     const [newUser, setNewUser] = useState({
         username: "",
@@ -23,7 +23,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
             if(res.ok){
                 res.json().then(setCurrentUser)
                 handleDisplayForm();
-                navigate('/');
+                // navigate('dashboard');
             } else {
                 res.json().then(data => setErrors(data.errors))
             }
@@ -56,7 +56,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                 <Form onSubmit={handleSignup}>
                     <Form.Field
                         control={Input}
-                        label="Username:"
+                        label="username:"
                         type="username"
                         name="username"
                         value={newUser.username}
@@ -64,7 +64,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="Name:"
+                        label="name:"
                         type="name"
                         name="name"
                         value={newUser.name}
@@ -81,7 +81,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="Password:"
+                        label="password:"
                         type="password"
                         name="password"
                         value={newUser.password}
@@ -89,16 +89,14 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                     />
                     <Form.Field 
                         control={Input}
-                        label="Password Confirmation:"
+                        label="password confirmation:"
                         type="password"
                         name="password_confirmation"
                         value={newUser.password_confirmation}
                         onChange={handleChange}
                     />
-                    <Form.Button type="submit">Submit</Form.Button>
-                    JK I have an account!
-                    <br/>
-                    <Button onClick={handleFormDisplay}>Login</Button>
+                    <Form.Field control={Button}>Submit!</Form.Field>
+                    <h5 onClick={handleFormDisplay}>JK I have an account!</h5>
                     <div id="errors-container">
                         {errors ? 
                         errors.map(e => {
