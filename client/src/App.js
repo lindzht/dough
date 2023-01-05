@@ -73,6 +73,18 @@ function App() {
 
 
 
+  useEffect(() => {
+    fetch("/categories")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          setCategories(data)  
+        })
+      }
+    })
+  }, [newCategory]);
+
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
 }
