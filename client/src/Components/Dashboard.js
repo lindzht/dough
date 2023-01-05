@@ -1,7 +1,14 @@
+import { UNSAFE_getPathContributingMatches } from "@remix-run/router";
 import { Container, Header, Table } from "semantic-ui-react";
 
 
-function Dashboard ({expenses}){
+function Dashboard ({expenses, currentUser}){
+
+    console.log(currentUser)
+
+//    const {username, name, income} = currentUser
+
+
 
     const miniExpenseArray = expenses.slice(0,5).map((ex)=>{
         return (
@@ -9,7 +16,7 @@ function Dashboard ({expenses}){
                 <Table.Body>
                     <Table.Row>
                         <Table.Cell>{ex.item}</Table.Cell>
-                        <Table.Cell>{ex.cost}</Table.Cell>
+                        <Table.Cell>${ex.cost}</Table.Cell>
                         <Table.Cell>{ex.date_of_expense}</Table.Cell>
                         <Table.Cell>{ex.category.category_name}</Table.Cell>
                         <Table.Cell>{ex.category.cat_type}</Table.Cell>
