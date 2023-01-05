@@ -33,17 +33,19 @@ function Nav ({currentUser, handleDisplayForm, setCurrentUser, handleLogOut}) {
                         </Link>
                         {/* <Link to="/savings">
                             <Dropdown.Item text='Savings'/>
-                        </Link> */}
+                        </Link> */}     
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown item text='Expense'>
+                    <Dropdown.Menu>
+                        <Link to="/expenses">
+                            <Dropdown.Item>All Expenses</Dropdown.Item>
+                        </Link>
                         <Link to="/new">
                             <Dropdown.Item text='Add New Expense'/>
                         </Link>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Menu.Item>
-                    <Link to="/expenses">
-                        All Expenses
-                    </Link>
-                </Menu.Item>
                 <Menu.Menu position="right">
                     <Menu.Item onClick={handleLogOut}>
                         <Link to="/">

@@ -26,13 +26,7 @@ function Dashboard ({expenses, currentUser}){
         <div>
             <div id="dash-div-head-container">
                 <div className="dash-header">
-                    <h1>This is your dashboard {currentUser && currentUser.name}!</h1>
-                </div>
-                <div className="dash-header">
-                    <h1>Your Monthly Income:</h1>
-                </div>
-                <div className="dash-header">
-                    <h1>${currentUser && currentUser.income}</h1>
+                    <h1>Welcome to your Dashboard, {currentUser && currentUser.name}!</h1>
                 </div>
             </div>
             <Grid container columns={2} divided>
