@@ -6,7 +6,6 @@ function ExpenseItem({id, item, cost, date_of_expense}) {
     // const {id} = useParams();
     // const i = id
     const handleDelete = () => {
-        // console.log(i)
         fetch(`/expenses/${id}`, {
             method: "DELETE",
         })
@@ -14,6 +13,10 @@ function ExpenseItem({id, item, cost, date_of_expense}) {
 
     const handleEdit = () => {
         console.log("edit")
+        // fetch(`/expenses/${id}`, {
+        //     method: "PUT",
+        //     body: JSON.stringify(item),
+        // })
     }
 
     return (

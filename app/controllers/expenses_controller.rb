@@ -23,7 +23,9 @@ class ExpensesController < ApplicationController
     end
 
     def update
-
+        expense = Expense.find(params[:id])
+        expense.update(expense_params)
+        render json: expense, status: :accepted
     end
 
     private
