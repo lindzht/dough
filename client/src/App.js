@@ -75,7 +75,7 @@ function App() {
         })
       }
     })
-  }, [newCategory, updatedCategories]);
+  }, [newCategory, currentUser, updatedCategories]);
 
   //FETCH EXPENSES FOR USER
   useEffect(() => {
@@ -88,7 +88,7 @@ function App() {
         })
       }
     })
-  }, [newExpense, updatedExpenses]);
+  }, [newExpense, currentUser, updatedExpenses]);
 
 
   const handleDisplayForm = ()=> {
