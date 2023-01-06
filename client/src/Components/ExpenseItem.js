@@ -28,7 +28,14 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
 
     const handleDelete = () => {
         fetch(`/expenses/${id}`, {
-            method: "DELETE",
+            method: "DELETE"
+        })
+        .then(res => {
+            if (res.ok){
+                res.json().then(data => {setUpdatedExpenses(data)})
+            } else {
+                res.json().then(console.log("no bueno"))
+            }
         })
     }
 
