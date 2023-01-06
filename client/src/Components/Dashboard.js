@@ -1,4 +1,5 @@
-import { Divider, Container, Grid, Header, Segment, Table, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Icon, Divider, Container, Grid, Header, Segment, Table, Button } from "semantic-ui-react";
 
 
 function Dashboard ({expenses, currentUser}){
@@ -6,7 +7,6 @@ function Dashboard ({expenses, currentUser}){
 
     const miniExpenseArray = expenses.slice(0,5).map((ex)=>{
         return (
-            <>
                 <Table.Body>
                     <Table.Row>
                         <Table.Cell>{ex.item}</Table.Cell>
@@ -16,7 +16,6 @@ function Dashboard ({expenses, currentUser}){
                         <Table.Cell>{ex.category.cat_type}</Table.Cell>
                     </Table.Row>
                 </Table.Body>
-            </>
         )
     });
 
@@ -26,13 +25,7 @@ function Dashboard ({expenses, currentUser}){
         <div>
             <div id="dash-div-head-container">
                 <div className="dash-header">
-                    <h1>This is your dashboard {currentUser && currentUser.name}!</h1>
-                </div>
-                <div className="dash-header">
-                    <h1>Your Monthly Income:</h1>
-                </div>
-                <div className="dash-header">
-                    <h1>${currentUser && currentUser.income}</h1>
+                    <h1>Welcome to your Dashboard, {currentUser && currentUser.name}!</h1>
                 </div>
             </div>
             <Grid container columns={2} divided>
@@ -41,7 +34,11 @@ function Dashboard ({expenses, currentUser}){
                         <Segment>
                             <div>
                                 <Container>
-                                    <Header>Recent Expenses</Header>
+                                    <h2>Recent Expenses
+                                        <Link to="/new">
+                                            <Button circular icon="plus" floated="right"/>
+                                        </Link>
+                                    </h2>
                                     <Table>
                                         <Table.Header>
                                             <Table.Row>
@@ -61,11 +58,11 @@ function Dashboard ({expenses, currentUser}){
                     <Grid.Column textAlign="center">                         
                         <Segment>
                             <br/>
-                            <u><Header position="middle" as='h3'>Monthly Income:</Header></u>
+                            <u><Header position="middle" as='h2'>Monthly Income:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.income}</p>               
                         </Segment>                          
                         <Segment>
-                            <u><Header position="middle" as='h3'>Accumulated Expenses This Month:</Header></u>
+                            <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   
                         </Segment>
                     </Grid.Column>
