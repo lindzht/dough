@@ -12,6 +12,7 @@ import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
 import SignupForm from './Components/SignupForm';
 import NotFound from './Components/NotFound';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -140,8 +141,9 @@ return (
             setErrors={setErrors} 
             errors={errors}/>}/>
           <Route path="*" element={<NotFound />}/>
-        </Route>
+        </Route>      
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
