@@ -12,10 +12,10 @@ class ExpensesController < ApplicationController
     end
 
     def create
-        # byebug
+        byebug
         params[:user_id] = session[:user_id]
-        expense = Expense.create!(expense_params)
-        expense.update(category_id: params[:category_id])
+        expense = Expense.create(item: params[:item], cost: params[:cost], date_of_expense: params[:date_of_expense], user_id: params[:user_id], category_id: params[:category_id])
+        # expense.update(category_id: params[:category_id])
         render json: expense, status: :created
     end
 
@@ -34,12 +34,20 @@ class ExpensesController < ApplicationController
 
     private
 
-    def expense_params
-        # need to add id bc it belongs to user and category
-        params.permit(:item, :cost, :date_of_expense, :user_id)
-    end
+    # def expense_params
+    #     # need to add id bc it belongs to user and category
+    #     params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
+    # end
 
     def find_user
         User.find(session[:user_id])
     end
 end
+
+# def create
+#     byebug
+#     params[:user_id] = session[:user_id]
+#     expense = Expense.create!(expense_params)
+#     expense.update(category_id: params[:category_id])
+#     render json: expense, status: :created
+# end
