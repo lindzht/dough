@@ -30,7 +30,8 @@ class ExpensesController < ApplicationController
         # byebug
         expense = Expense.find(params[:id])
         expense.destroy
-        head :no_content
+        # head :no_content
+        render json: expense, status: :ok
     end
 
     def update
