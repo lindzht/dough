@@ -37,7 +37,6 @@ function NewExpenseForm ({setErrors, errors, categories}){
 
     const handleNewExpense = (e) => {
         e.preventDefault();
-        console.log(expense)
         fetch("/expenses", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
