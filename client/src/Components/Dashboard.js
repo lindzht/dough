@@ -130,7 +130,7 @@ function Dashboard ({expenses, currentUser}){
                                             <input className="button" type="submit" />
                                         </form>
                                 
-                                : `${currentUser && currentUser.income}`
+                                : `$${currentUser && currentUser.income}`
 
                                 }
                             </p>               

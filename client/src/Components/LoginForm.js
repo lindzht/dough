@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { Divider, Header, Container, Form, Input, Button, Image, Segment } from 'semantic-ui-react';
 import SignupForm from './SignupForm';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DoughLine from '../images/DoughLine.png';
 
 
@@ -94,7 +94,9 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                     Don't have an account?
                     <br/>
                     <br/>
-                    <Button onClick={handleSignupFormDisplay}>Sign Up</Button>
+                    <Link to="/signup">
+                        <Button /*onClick={handleSignupFormDisplay}*/>Sign Up</Button>
+                    </Link>
                     <div id="errors-container">
                         {errors ? <p>{errors}</p> : null}
                     </div>

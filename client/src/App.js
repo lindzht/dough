@@ -73,6 +73,7 @@ function App() {
     })
   }, [currentUser, newCategory, updatedCategories]);
 
+
   //FETCH EXPENSES FOR USER
   useEffect(() => {
     fetch("/expenses")
@@ -85,6 +86,7 @@ function App() {
       }
     })
   }, [currentUser, newExpense, updatedExpenses]);
+
 
 
   const handleDisplayForm = ()=> {

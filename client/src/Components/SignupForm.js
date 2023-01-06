@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 // import LoginForm from './LoginForm';
 
 function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
+
     let navigate = useNavigate();
+
     const [newUser, setNewUser] = useState({
         username: "",
         name: "",
@@ -109,7 +111,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                             value={newUser.password_confirmation}
                             onChange={handleChange}
                         />
-                        
+
                         <Form.Button type="submit">Submit</Form.Button>
                        
                         <Divider horizontal>Or</Divider>
