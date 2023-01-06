@@ -21,6 +21,11 @@ function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
                 res.json().then(data => setErrors(data.errors))
             }
         })
+
+        setNewCategory({
+            category_name: "",
+            cat_type: ""
+        })
     }
 
     const handleChange = (e) => { 

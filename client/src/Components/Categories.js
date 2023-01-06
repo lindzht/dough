@@ -38,19 +38,19 @@ function Categories({setErrors, errors, newCategory, setNewCategory, allCategori
     const panes = [
       {
         menuItem: (
-          <Menu.Item key='Fun'>
-            Fun<Label>{funFilter.length}</Label>
-          </Menu.Item>
-        ),
-        render: () => <Tab.Pane>{funSubCategories}</Tab.Pane>,
-      },
-      {
-        menuItem: (
           <Menu.Item key='necessary'>
             Necessary<Label>{necFilter.length}</Label>
           </Menu.Item>
         ),
         render: () => <Tab.Pane>{necSubCategories}</Tab.Pane>,
+      },
+      {
+        menuItem: (
+          <Menu.Item key='Fun'>
+            Fun<Label>{funFilter.length}</Label>
+          </Menu.Item>
+        ),
+        render: () => <Tab.Pane>{funSubCategories}</Tab.Pane>,
       },
       {
         menuItem: (
