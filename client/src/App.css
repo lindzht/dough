@@ -221,3 +221,20 @@ input {
   margin: -1em 0 2em 0;
   font-size: 0.7em;
 }
+
+/* SIGNUP PAGE */
+
+#signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-container form {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
