@@ -61,7 +61,7 @@ function Nav ({currentUser, handleDisplayForm, setCurrentUser, handleLogOut}) {
     return(
         <>
             <Menu>
-                { currentUser ? <HiddenNav /> : 
+                { currentUser && currentUser ? <HiddenNav /> : 
                  <> 
                     <Menu.Item>
                         <Link to="/">
