@@ -16,12 +16,12 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
                     <Grid columns={2} relaxed="very" stackable>
                         <Grid.Column>
                             <Link to="/signup">
-                                <Button content="Signup you Doingus!" icon="signup"/>
+                                <Button content="Signup you, Doingus!" icon="signup"/>
                             </Link>
                         </Grid.Column>
                         <Grid.Column verticalAlign="middle">
                             <Link to="/login">
-                                <Button>Go fucking login!</Button>
+                                <Button>Login Silly, Goose!</Button>
                             </Link>
                         </Grid.Column>
                     </Grid>
