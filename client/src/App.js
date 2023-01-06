@@ -12,6 +12,7 @@ import AllExpenses from './Components/AllExpenses';
 import LoginForm from './Components/LoginForm';
 import SignupForm from './Components/SignupForm';
 import NotFound from './Components/NotFound';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
         })
       }
     })
-  }, [newExpense, updatedCategories]);
+  }, [newExpense, updatedExpenses]);
 
 
   const handleDisplayForm = ()=> {
@@ -97,6 +98,7 @@ function App() {
 
 return (
     <BrowserRouter>
+    <div id='app-container'>   
       <Routes>
         <Route path="/" element={
           <Nav  
@@ -140,8 +142,10 @@ return (
             setErrors={setErrors} 
             errors={errors}/>}/>
           <Route path="*" element={<NotFound />}/>
-        </Route>
+        </Route>  
       </Routes>
+      </div>    
+      <Footer/>
     </BrowserRouter>
   );
 }

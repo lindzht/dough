@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+/* #app-container {
+  height: 500px;
+} */
+
 #LandingLogo {
   display: flex;
   justify-content: center;
@@ -218,5 +222,50 @@ input {
   font-style: italic;
   text-align: center;
   color: grey;
-  margin-top: -50px;
+  margin: -1em 0 2em 0;
+  font-size: 0.7em;
+}
+
+/* SIGNUP PAGE */
+
+#signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-container form {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FOOTER */
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3em;
+  padding-bottom: 3em;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+  border-top: 1px solid rgb(215, 215, 215);
+}
+
+#footer p {
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color:rgb(218, 155, 30)
+}
+
+hr {
+  color: black;
 }
