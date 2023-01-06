@@ -87,7 +87,7 @@ function App() {
         })
       }
     })
-  }, [newExpense, updatedCategories]);
+  }, [newExpense, updatedExpenses]);
 
 
   const handleDisplayForm = ()=> {

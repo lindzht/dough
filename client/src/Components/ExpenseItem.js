@@ -6,10 +6,7 @@ import {useState} from 'react'
 function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, setUpdatedExpenses}) {
     const [displayForms, setDisplayForms] = useState(false);
     const [updatedExpense, setUpdatedExpense] = useState({
-        item: {item},
-        // cost: {cost},
-        // date_of_expense: {date_of_expense},
-        // category_name: {category.category_name}
+        item: item,
     })
 
     // TOGGLES IF EDIT BOTTON HAS BEEN CLICKED
