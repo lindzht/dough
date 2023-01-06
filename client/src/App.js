@@ -42,14 +42,10 @@ function App() {
         res.json()
         .then(user => {
           setCurrentUser(user)
-          // console.log(currentUser)
+          console.log(user)
         })
       }
     });
-
-    // fetch("/expenses")
-    // .then(r=>r.json())
-    // .then(setExpenses)
   }, []);
 
     //LOGOUT: 
@@ -75,7 +71,7 @@ function App() {
         })
       }
     })
-  }, [newCategory, updatedCategories]);
+  }, [currentUser, newCategory, updatedCategories]);
 
   //FETCH EXPENSES FOR USER
   useEffect(() => {
@@ -88,7 +84,7 @@ function App() {
         })
       }
     })
-  }, [newExpense, updatedExpenses]);
+  }, [currentUser, newExpense, updatedExpenses]);
 
 
   const handleDisplayForm = ()=> {
@@ -140,7 +136,8 @@ return (
             handleDisplayForm={handleDisplayForm} />}/>
           <Route path="signup" element={<SignupForm 
             setErrors={setErrors} 
-            errors={errors}/>}/>
+            errors={errors}
+            setCurrentUser={setCurrentUser}/>}/>
           <Route path="*" element={<NotFound />}/>
         </Route>  
       </Routes>
