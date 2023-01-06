@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NewExpenseForm ({setErrors, errors, categories}){
     let navigate = useNavigate();
@@ -24,6 +24,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
         // note: ""
     })
     
+    console.log(expense)
     
     const handleExpenseForm = (e) => {
         const key = e.target.name;
@@ -99,7 +100,9 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 {/* Note:<input></input> */}
                 {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
                 <br />
+                {/* <Link to="/expenses"> */}
                 <input type="submit" value="Submit"></input>
+                {/* </Link> */}
                 <div id="errors-container">
                     {errors ? 
                     errors.map(e => {

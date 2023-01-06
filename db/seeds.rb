@@ -18,7 +18,7 @@ c10 = Category.create(category_name: "Undefined", cat_type: "Undefined" )
 
 
 
-Expense.create(item: "Cell Phone Bill", cost: 50.00, date_of_expense: "01/01/01", user_id: 1, category_id: test.id )
+Expense.create(item: "Cell Phone Bill", cost: 50.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
 Expense.create(item: "Internet Bill", cost: 30.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
 Expense.create(item: "Electric Bill", cost: 70.00, date_of_expense: "01/01/01", user_id: 1, category_id: c1.id )
 Expense.create(item: "Rent", cost: 1500.00, date_of_expense: "01/01/01", user_id: 1, category_id: c2.id )

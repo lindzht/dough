@@ -19,6 +19,25 @@ function Dashboard ({expenses, currentUser}){
         )
     });
 
+    // function PosNeg() {
+    //     if (currentUser && currentUser.sum_of_expenses > currentUser && currentUser.income) {
+    //         return (
+    //             <Segment color="red">
+    //                 <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
+    //                 <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   
+    //             </Segment>
+    //         )
+    //     } else {
+    //         return (
+    //             <Segment color="green">
+    //                 <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
+    //                 <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   
+    //             </Segment>
+    //         )
+    //     }
+    // }
+
+   
 
 
     return(
@@ -60,7 +79,7 @@ function Dashboard ({expenses, currentUser}){
                             <br/>
                             <u><Header position="middle" as='h2'>Monthly Income:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.income}</p>               
-                        </Segment>                          
+                        </Segment>                         
                         <Segment>
                             <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   

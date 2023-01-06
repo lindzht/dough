@@ -186,3 +186,10 @@ input {
 #new-expense-form-container h4:hover {
   color:rgb(218, 155, 30);
 }
+
+
+/* EXPENSE PAGE */
+
+#all-expense-table {
+  margin-bottom: 30px;
+}
