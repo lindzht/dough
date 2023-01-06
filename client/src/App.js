@@ -98,6 +98,7 @@ function App() {
 
 return (
     <BrowserRouter>
+    <div id='app-container'>   
       <Routes>
         <Route path="/" element={
           <Nav  
@@ -141,8 +142,9 @@ return (
             setErrors={setErrors} 
             errors={errors}/>}/>
           <Route path="*" element={<NotFound />}/>
-        </Route>      
+        </Route>  
       </Routes>
+      </div>    
       <Footer/>
     </BrowserRouter>
   );

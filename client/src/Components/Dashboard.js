@@ -43,7 +43,7 @@ function Dashboard ({expenses, currentUser}){
     const [income, setIncome] = useState({income: ""})
 
     function handleIncomeEdit (){
-        setEditIncomeForm(!editIncomeForm)
+        console.log(!editIncomeForm)
     }
 
     const handleChange = (e) => { 
