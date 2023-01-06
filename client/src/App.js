@@ -75,7 +75,7 @@ function App() {
         })
       }
     })
-  }, [newCategory, updatedCategories]);
+  }, [newCategory, currentUser, updatedCategories]);
 
   //FETCH EXPENSES FOR USER
   useEffect(() => {
