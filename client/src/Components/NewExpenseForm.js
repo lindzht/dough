@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 
-function NewExpenseForm ({setErrors, errors, categories}){
+function NewExpenseForm ({setErrors, errors, categories, setExpenses, expense, setExpense}){
     let navigate = useNavigate();
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
@@ -15,14 +15,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
     // console.log(categories)
 
     // Form to track new expense details
-    const [expense, setExpense] = useState({
-        item: "",
-        cost: 0,
-        // needs to match column names in schema
-        // date_of_expense: "",
-        category_id: ""
-        // note: ""
-    })
+
     
     
     const handleExpenseForm = (e) => {
@@ -44,10 +37,12 @@ function NewExpenseForm ({setErrors, errors, categories}){
             body: JSON.stringify(expense)
         })
         .then(res => {
-            if(res.ok) {
-                res.json().then(console.log(expense))
+            if(res.ok){
+                res.json().then(data => {
+                    setExpenses(data);
+                }) 
             } else {
-                res.json().then(console.log(errors))
+                res.json().then(data => console.log("nope"))
             }
         })
 

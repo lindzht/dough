@@ -5,10 +5,12 @@ class Category < ApplicationRecord
 
     validates :category_name, presence: true
     validates :cat_type, presence: true
+    validates :category_name, uniqueness: true
+    # validates :id, uniqueness: true
 
 
-    def self.category_types
-        self.distinct.pluck(:cat_type)
+    def self.category_names
+        self.distinct.pluck(:category_name)
     end
 
     def self.category_count
@@ -18,6 +20,8 @@ class Category < ApplicationRecord
             "#{t}: #{count}"
         end
     end
+
+    
 
 
 end

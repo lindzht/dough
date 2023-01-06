@@ -26,6 +26,11 @@ function App() {
     category_name: "",
     cat_type: ""
   })
+  const [newExpense, setNewExpense] = useState({
+    item: "",
+    cost: 0,
+    category_id: 0
+})
 
 
 
@@ -41,11 +46,12 @@ function App() {
         })
       }
     });
-
     fetch("/expenses")
     .then(r=>r.json())
     .then(setExpenses)
-  }, []);
+  }, [newExpense]);
+
+  // console.log(expenses)
 
     //LOGOUT: 
     const handleLogOut =()=> {
@@ -70,7 +76,7 @@ function App() {
         })
       }
     })
-  }, [newCategory, updatedCategories]);
+  }, [newCategory, updatedCategories, currentUser]);
 
 
   const handleDisplayForm = ()=> {
@@ -106,7 +112,7 @@ return (
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm categories={categories}/>}/>
+          <Route path="new" element={<NewExpenseForm setExpenses={setExpenses} expense={newExpense} setExpense={setNewExpense} categories={categories}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}

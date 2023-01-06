@@ -16,7 +16,6 @@ class CategoriesController < ApplicationController
     end
 
     def update
-        # byebug
         # user = find_user
         # subcategory = user.categories.find_by(category_name: params[:id])
         subcategory = Category.find_by(category_name: params[:id])

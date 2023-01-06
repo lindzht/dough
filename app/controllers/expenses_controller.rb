@@ -12,10 +12,18 @@ class ExpensesController < ApplicationController
     end
 
     def create
-        # byebug
         params[:user_id] = session[:user_id]
-        expense = Expense.create!(expense_params)
+        expense = Expense.create(
+            item: params[:item], 
+            cost: params[:cost],
+            date_of_expense: params[:date_of_expense],
+            user_id: params[:user_id]
+        )
+        expense.update(category_id: params[:category_id])
         render json: expense, status: :created
+        # params[:user_id] = session[:user_id]
+        # expense = Expense.create!(expense_params)
+        # render json: expense, status: :created
     end
 
     def destroy
