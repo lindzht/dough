@@ -13,7 +13,7 @@ function AllExpenses({expenses, setUpdatedExpenses}) {
 
     return (
         <div id="all-expense-table">
-            <h1>Expenses Bitches</h1>
+            <h1>Check out these Expenses, yo!</h1>
             <Container>
                 <Table>
                     <Table.Header>
