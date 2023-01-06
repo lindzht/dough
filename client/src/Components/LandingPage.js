@@ -21,7 +21,7 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
                         </Grid.Column>
                         <Grid.Column verticalAlign="middle">
                             <Link to="/login">
-                                <Button>Go fucking login!</Button>
+                                <Button>Login Silly Goose!</Button>
                             </Link>
                         </Grid.Column>
                     </Grid>
