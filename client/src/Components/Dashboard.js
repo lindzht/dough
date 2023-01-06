@@ -74,13 +74,13 @@ function Dashboard ({expenses, currentUser}){
                             </div>
                         </Segment>
                     </Grid.Column>
-                    <Grid.Column textAlign="center">                         
+                    <Grid.Column textAlign="center" >                         
                         <Segment>
                             <br/>
                             <u><Header position="middle" as='h2'>Monthly Income:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.income}</p>               
                         </Segment>                         
-                        <Segment>
+                        <Segment  >
                             <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
                             <p className="dash-h1">${currentUser && currentUser.sum_of_expenses}</p>   
                         </Segment>

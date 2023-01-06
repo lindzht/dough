@@ -99,9 +99,9 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 {/* Note:<input></input> */}
                 {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
                 <br />
-                {/* <Link to="/expenses"> */}
-                <input type="submit" value="Submit"></input>
-                {/* </Link> */}
+                <Link to="/expenses">
+                    <input type="submit" value="Submit"></input>
+                </Link>
                 <div id="errors-container">
                     {errors ? 
                     errors.map(e => {
