@@ -1,11 +1,15 @@
 import { Container, Table } from 'semantic-ui-react';
 import ExpenseItem from './ExpenseItem';
 
-function AllExpenses({expenses}) {
+function AllExpenses({expenses, setUpdatedExpenses}) {
 
     // console.log(expenses)
     const expenseArray = expenses.map((eachExpense) => {
-        return( <ExpenseItem key={eachExpense.id} {...eachExpense}/>)
+        return( <ExpenseItem 
+            {...eachExpense} 
+            key={eachExpense.id} 
+            setUpdatedExpenses={setUpdatedExpenses}
+            allExpenses={expenses}/>)
     })
 
     return (

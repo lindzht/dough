@@ -7,7 +7,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
             return (
-                <option value={c.id} key={c.id}>
+                <option value={c.id}>
                     {c.category_name} 
                 </option>
             )
@@ -59,7 +59,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
         })
 
     }
-
+    console.log(expense)
     return(
         <div id="new-expense-form-container">
             <h1>Add a new expense!</h1>

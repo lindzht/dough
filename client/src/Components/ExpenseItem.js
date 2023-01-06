@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useState} from 'react'
 
 
-function ExpenseItem({id, item, cost, date_of_expense, category}) {
+function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, setUpdatedExpenses}) {
     const [displayForms, setDisplayForms] = useState(false);
     const [updatedExpense, setUpdatedExpense] = useState({
         item: {item},
@@ -11,8 +11,6 @@ function ExpenseItem({id, item, cost, date_of_expense, category}) {
         date_of_expense: {date_of_expense},
         // category_name: {category.category_name}
     })
-
-    console.log(updatedExpense)
 
     // TOGGLES IF EDIT BOTTON HAS BEEN CLICKED
     const displayEditInput = () => {
@@ -44,11 +42,14 @@ function ExpenseItem({id, item, cost, date_of_expense, category}) {
             },
             body: JSON.stringify(updatedExpense),
         })
-        // .then(res => {
-        //     if(res.ok){
-        //         res.json().then(data => {([...all])})
-        //     }
-        // })
+        .then(res => {
+            if(res.ok){
+                res.json()
+                .then(data => {setUpdatedExpenses([...allExpenses, data])})
+            } else {
+                res.json().then(console.log("uh oh"))
+            }
+        })
     }
 
     return (
@@ -80,8 +81,7 @@ function ExpenseItem({id, item, cost, date_of_expense, category}) {
                             <input
                                 id="item"
                                 name="item"
-                                placeholder="Update item"
-                                value={updatedExpense.item}
+                                value={item}
                                 onChange={handleChange}
                             />
                             <input className="button" type="submit" />
