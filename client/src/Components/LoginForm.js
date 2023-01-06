@@ -77,6 +77,7 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                         value={user.username}
                         onChange={handleChange}
                     />
+
                     <Form.Field 
                         control={Input}
                         label="Password:"
@@ -85,7 +86,7 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                         value={user.password}
                         onChange={handleChange}
                     />
-                    <p id='login-p'>Case Sensitive</p>
+                    <p id='login-p'>Username & Password Are Case Sensitive</p>
                     <Form.Button type="submit">Login</Form.Button> 
                     
                     <Divider horizontal>Or</Divider>

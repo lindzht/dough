@@ -218,5 +218,6 @@ input {
   font-style: italic;
   text-align: center;
   color: grey;
-  margin-top: -50px;
+  margin: -1em 0 2em 0;
+  font-size: 0.7em;
 }
