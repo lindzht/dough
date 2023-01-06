@@ -61,6 +61,7 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
                     <Table.Cell>${cost}</Table.Cell>
                     <Table.Cell>{date_of_expense}</Table.Cell>
                     <Table.Cell>{category.category_name}</Table.Cell>
+                    <Table.Cell>{category.cat_type}</Table.Cell>
                     <Table.Cell>
                         <div className="mini ui icon button">
                             <i className="pencil alternate icon" onClick={handleEdit}></i>
@@ -99,51 +100,3 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
 };
 
 export default ExpenseItem;
-{/* <i class="edit icon"></i> */}
-{/* <i class="edit outline icon"></i> */}
-{/* <i class="trash alternate icon"></i>
-<i class="eraser icon"></i> */}
-{/* <i class="pencil alternate icon"></i> */}
-{/* <i class="trash icon"></i> */}
-{/* <i class="x icon"></i> */}
-{/* <Table.Cell>
-<form>
-    <input
-        id="item"
-        name="item"
-        value={updatedExpense.item}
-        onChange={handleChange}
-    />
-    <input/>
-    <input/>
-</form>
-</Table.Cell> */}
-
-{/* <Table.Body>
-    <Table.Row>
-        
-        <Table.Cell>
-            <form>
-                <input/>
-            </form>
-        </Table.Cell>
-        <Table.Cell>
-            <form>
-                <input/>
-            </form>
-        </Table.Cell>
-        <Table.Cell>
-            <form>
-                <input/>
-            </form>
-        </Table.Cell>
-        <Table.Cell>
-            <form>
-                <select/>
-            </form>
-        </Table.Cell>
-        <Table.Cell>
-        <input className="button" type="submit" />
-        </Table.Cell>
-    </Table.Row>
-</Table.Body> */}
