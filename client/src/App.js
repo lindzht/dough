@@ -27,8 +27,11 @@ function App() {
     category_name: "",
     cat_type: ""
   })
-
-
+  const [newExpense, setNewExpense] = useState({
+    item: "",
+    cost: 0,
+    category_id: ""
+})
 
   //STAY LOGGED IN:
   useEffect(() => {
@@ -43,10 +46,10 @@ function App() {
       }
     });
 
-    fetch("/expenses")
-    .then(r=>r.json())
-    .then(setExpenses)
-  }, [updatedExpenses]);
+    // fetch("/expenses")
+    // .then(r=>r.json())
+    // .then(setExpenses)
+  }, []);
 
     //LOGOUT: 
     const handleLogOut =()=> {
@@ -73,6 +76,19 @@ function App() {
     })
   }, [newCategory, updatedCategories]);
 
+  //FETCH EXPENSES FOR USER
+  useEffect(() => {
+    fetch("/expenses")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          setExpenses(data)
+        })
+      }
+    })
+  }, [newExpense, updatedCategories]);
+
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
@@ -89,18 +105,20 @@ return (
             errors={errors} 
             handleDisplayForm={handleDisplayForm}
             setCurrentUser={setCurrentUser}
-            handleLogOut={handleLogOut}
-            />
-          }>
-          <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
-          <Route path="dashboard" element={<Dashboard currentUser={currentUser} expenses={expenses}/>}/>
-
+            handleLogOut={handleLogOut}/>}>
+          <Route index element={<LandingPage 
+            currentUser={currentUser}  
+            setCurrentUser={setCurrentUser} 
+            setErrors={setErrors} 
+            errors={errors}/>}/>
+          <Route path="dashboard" element={<Dashboard 
+            currentUser={currentUser} 
+            expenses={expenses}/>}/>
           <Route path="expenses" element={<AllExpenses 
             errors={errors} 
             setErrors={setErrors} 
             expenses={expenses} 
             setUpdatedExpenses={setUpdatedExpenses}/>}/>
-
           <Route path="prev" element={<PrevMonth />}/>
           <Route path="categories" element={<Categories 
             setErrors={setErrors}  
@@ -111,16 +129,17 @@ return (
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm categories={categories}/>}/>
+          <Route path="new" element={<NewExpenseForm categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}
             setErrors={setErrors} 
             errors={errors} 
-            handleDisplayForm={handleDisplayForm} />
-            } />
-            <Route path="signup" element={<SignupForm setErrors={setErrors} errors={errors}/>}/>
-            <Route path="*" element={<NotFound />}/>
+            handleDisplayForm={handleDisplayForm} />}/>
+          <Route path="signup" element={<SignupForm 
+            setErrors={setErrors} 
+            errors={errors}/>}/>
+          <Route path="*" element={<NotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>

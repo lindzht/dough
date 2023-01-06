@@ -15,6 +15,11 @@
   justify-content: center;
 }
 
+.dash-header h1{
+  font-style: italic;
+  font-size: 3em;
+}
+
 /* .dash-seg-div {
   display: flex;
   justify-content: center;
@@ -25,8 +30,7 @@
 }
 
 #dash-div-head-container {
-  margin-top: 20px;
-  margin-bottom: 30px;
+margin: 3em 0 3em 0;
 }
 
 
@@ -72,12 +76,19 @@
 /* ------------------------- CATEGORY ------------------------- */
 
 
-#category-tab {
-  margin: 5em 20em 0 20em;
-  /* box-shadow: 5px 5px 5px rgb(181, 181, 181); */
+
+#category-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20em 0 20em; 
 }
 
-
+#category-container h1 {
+  text-align: center;
+  margin: 1em 0 1em 0;
+  font-style: italic;
+  font-size: 3em;
+}
 
 #catform-container {
   display: flex;
@@ -192,4 +203,20 @@ input {
 
 #all-expense-table {
   margin-bottom: 30px;
+}
+
+#all-expense-table h1 {
+  font-style: italic;
+  text-align: center;
+  font-size: 3em;
+  margin: 1em 0 1em 0;
+}
+
+/* LOGIN PAGE  */
+
+#login-p {
+  font-style: italic;
+  text-align: center;
+  color: grey;
+  margin-top: -50px;
 }

@@ -14,9 +14,14 @@ class ExpensesController < ApplicationController
     def create
         # byebug
         params[:user_id] = session[:user_id]
-        cat_id = Category.all.find_by(id: params[:category_id])
-        expense = Expense.find_or_create_by(item: params[:item], cost: params[:cost], date_of_expense: params[:date_of_expense], user_id: params[:user_id], category_id: cat_id)
-        # expense.update(category_id: params[:category_id])
+        cat = Category.find(params[:category_id])
+        expense = Expense.create(
+            item: params[:item], 
+            cost: params[:cost], 
+            date_of_expense: params[:date_of_expense], 
+            user_id: params[:user_id], 
+            category_id: cat.id
+            )
         render json: expense, status: :created
     end
 
@@ -24,10 +29,12 @@ class ExpensesController < ApplicationController
         # byebug
         expense = Expense.find(params[:id])
         expense.destroy
-        head :no_content
+        # head :no_content
+        render json: expense, status: :ok
     end
 
     def update
+        # byebug
         expense = Expense.find(params[:id])
         expense.update(expense_params)
         render json: expense, status: :accepted
@@ -35,10 +42,10 @@ class ExpensesController < ApplicationController
 
     private
 
-    # def expense_params
-    #     # need to add id bc it belongs to user and category
-    #     params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
-    # end
+    def expense_params
+        # need to add id bc it belongs to user and category
+        params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
+    end
 
     def find_user
         User.find(session[:user_id])

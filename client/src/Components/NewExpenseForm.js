@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function NewExpenseForm ({setErrors, errors, categories}){
+function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpense}){
     let navigate = useNavigate();
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
@@ -12,26 +12,14 @@ function NewExpenseForm ({setErrors, errors, categories}){
                 </option>
             )
     })
-    // console.log(categories)
 
     // Form to track new expense details
-    const [expense, setExpense] = useState({
-        item: "",
-        cost: 0,
-        // needs to match column names in schema
-        // date_of_expense: "",
-        category_id: ""
-        // note: ""
-    })
-    
-    console.log(expense)
-    
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
 
-        setExpense({
-            ...expense, 
+        setNewExpense({
+            ...newExpense,
             [key]: value
         })
     }
@@ -41,25 +29,25 @@ function NewExpenseForm ({setErrors, errors, categories}){
         fetch("/expenses", {
             method: "POST",
             headers:{'Content-Type':'application/json'},
-            body: JSON.stringify(expense)
+            body: JSON.stringify(newExpense)
         })
         .then(res => {
-            if(res.ok) {
-                res.json().then(console.log(expense))
+            if(res.ok){
+                res.json().then(data => {
+                    setNewExpense(data);
+                    navigate('/expenses')
+                    setNewExpense({
+                        item:"",
+                        cost: 0,
+                        category_id: ""
+                    })
+                }) 
             } else {
-                res.json().then(console.log(errors))
+                res.json().then(console.log("no good"))
             }
         })
-
-        //will clear form
-        setExpense({
-            item: "",
-            cost: 0,
-            category_id: ""
-        })
-
     }
-    console.log(expense)
+
     return(
         <div id="new-expense-form-container">
             <h1>Add a new expense!</h1>
@@ -70,7 +58,7 @@ function NewExpenseForm ({setErrors, errors, categories}){
                     type="item"
                     name="item"
                     placeholder="What did you pay for? be fr"
-                    value={expense.item}
+                    value={newExpense.item}
                     onChange={handleExpenseForm}
                 />
                 <label>Cost</label>
@@ -78,30 +66,24 @@ function NewExpenseForm ({setErrors, errors, categories}){
                     label="Cost"
                     type="cost"
                     name="cost"
-                    value={expense.cost}
+                    value={newExpense.cost}
                     onChange={handleExpenseForm}
                 />
                 <label>Date of Expense</label>
                 <input
-                    control={Input}
                     label="Date of Expense"
                     type="date"
                     name="date_of_expense"
-                    value={expense.date}
+                    value={newExpense.date}
                     onChange={handleExpenseForm}
                 />
                 <label>Category</label> 
-                <select name="category_id" onChange={handleExpenseForm} value={expense.category_id}>
+                <select name="category_id" onChange={handleExpenseForm} value={newExpense.category_id}>
                     <option value="">Select</option>
                     {handleCategories}
                 </select>
                 <h4 onClick={()=> {navigate('/categories');}}>Don't see the category you want? Add a new one yo!</h4>
-                {/* Note:<input></input> */}
-                {/* <Form.Field control={Button}>Add New Expense</Form.Field> */}
-                <br />
-                {/* <Link to="/expenses"> */}
-                <input type="submit" value="Submit"></input>
-                {/* </Link> */}
+                <Button >Submit</Button>
                 <div id="errors-container">
                     {errors ? 
                     errors.map(e => {
@@ -115,4 +97,3 @@ function NewExpenseForm ({setErrors, errors, categories}){
 }
 
 export default NewExpenseForm;
-{/* <h1>New Expense Form</h1> */}

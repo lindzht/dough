@@ -74,7 +74,7 @@ function Categories({setErrors, errors, newCategory, setNewCategory, allCategori
 
     return(
        <div id="category-container">
-
+            <h1>Your Expense Categories</h1>
             <div id='category-tab'>
               <Tab menu={{ color: "blue", attached: true }} inverted panes={panes} />
             </div>
