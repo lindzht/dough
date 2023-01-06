@@ -22,7 +22,6 @@ class ExpensesController < ApplicationController
             user_id: params[:user_id], 
             category_id: cat.id
             )
-        # expense.update(category_id: params[:category_id])
         render json: expense, status: :created
     end
 

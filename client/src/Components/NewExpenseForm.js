@@ -96,4 +96,4 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
     )
 }
 
-export default NewExpenseForm
+export default NewExpenseForm;

@@ -33,7 +33,6 @@ function App() {
     category_id: ""
 })
 
-
   //STAY LOGGED IN:
   useEffect(() => {
     fetch("/me")
@@ -47,10 +46,10 @@ function App() {
       }
     });
 
-    fetch("/expenses")
-    .then(r=>r.json())
-    .then(setExpenses)
-  }, [updatedExpenses]);
+    // fetch("/expenses")
+    // .then(r=>r.json())
+    // .then(setExpenses)
+  }, []);
 
     //LOGOUT: 
     const handleLogOut =()=> {
@@ -89,6 +88,7 @@ function App() {
       }
     })
   }, [newExpense, updatedCategories]);
+
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
@@ -129,10 +129,7 @@ return (
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm 
-            categories={categories} 
-            newExpense={newExpense} 
-            setNewExpense={setNewExpense}/>}/>
+          <Route path="new" element={<NewExpenseForm categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}
