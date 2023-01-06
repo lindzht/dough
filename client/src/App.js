@@ -27,7 +27,11 @@ function App() {
     category_name: "",
     cat_type: ""
   })
-
+  const [newExpense, setNewExpense] = useState({
+    item: "",
+    cost: 0,
+    category_id: ""
+})
 
 
   //STAY LOGGED IN:
@@ -73,6 +77,18 @@ function App() {
     })
   }, [newCategory, updatedCategories]);
 
+  //FETCH EXPENSES FOR USER
+  useEffect(() => {
+    fetch("/expenses")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          setExpenses(data)
+        })
+      }
+    })
+  }, [newExpense, updatedCategories]);
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
@@ -111,7 +127,7 @@ return (
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
           <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm categories={categories}/>}/>
+          <Route path="new" element={<NewExpenseForm categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}
