@@ -7,8 +7,8 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
     const [displayForms, setDisplayForms] = useState(false);
     const [updatedExpense, setUpdatedExpense] = useState({
         item: {item},
-        cost: {cost},
-        date_of_expense: {date_of_expense},
+        // cost: {cost},
+        // date_of_expense: {date_of_expense},
         // category_name: {category.category_name}
     })
 
@@ -28,7 +28,14 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
 
     const handleDelete = () => {
         fetch(`/expenses/${id}`, {
-            method: "DELETE",
+            method: "DELETE"
+        })
+        .then(res => {
+            if (res.ok){
+                res.json().then(data => {setUpdatedExpenses(data)})
+            } else {
+                res.json().then(console.log("no bueno"))
+            }
         })
     }
 
@@ -82,7 +89,7 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
                             <input
                                 id="item"
                                 name="item"
-                                value={item}
+                                value={updatedExpense.item}
                                 onChange={handleChange}
                             />
                             <input className="button" type="submit" />

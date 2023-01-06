@@ -12,25 +12,14 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
                 </option>
             )
     })
-    // console.log(categories)
 
     // Form to track new expense details
-    // const [expense, setExpense] = useState({
-    //     item: "",
-    //     cost: 0,
-    //     // needs to match column names in schema
-    //     // date_of_expense: "",
-    //     category_id: ""
-    //     // note: ""
-    // })
-    
-    
     const handleExpenseForm = (e) => {
         const key = e.target.name;
         const value = e.target.value;
 
         setNewExpense({
-            ...newExpense, 
+            ...newExpense,
             [key]: value
         })
     }
@@ -58,26 +47,6 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
             }
         })
     }
-    // const handleSubmit = (e) => {
-    //     console.log("test")
-    //     e.preventDefault();
-    //     fetch("/expenses", {
-    //         method: "POST",
-    //         headers:{'Content-Type':'application/json'},
-    //         body:JSON.stringify(newExpense)
-    //     })
-    //     .then(res => {
-    //         if(res.ok){
-    //             res.json().then(data => {
-    //                 console.log(data);
-    //                 setNewExpense(data);
-    //             }) 
-    //         } else {
-    //             res.json().then(data => setErrors(data.errors))
-    //         }
-    //     })
-    // }
-
 
     return(
         <div id="new-expense-form-container">
@@ -128,4 +97,3 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
 }
 
 export default NewExpenseForm;
-// {/* <h1>New Expense Form</h1> */}

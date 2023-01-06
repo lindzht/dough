@@ -33,8 +33,6 @@ function App() {
     category_id: ""
 })
 
-
-
   //STAY LOGGED IN:
   useEffect(() => {
     fetch("/me")
@@ -107,18 +105,20 @@ return (
             errors={errors} 
             handleDisplayForm={handleDisplayForm}
             setCurrentUser={setCurrentUser}
-            handleLogOut={handleLogOut}
-            />
-          }>
-          <Route index element={<LandingPage currentUser={currentUser}  setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>}/>
-          <Route path="dashboard" element={<Dashboard currentUser={currentUser} expenses={expenses}/>}/>
-
+            handleLogOut={handleLogOut}/>}>
+          <Route index element={<LandingPage 
+            currentUser={currentUser}  
+            setCurrentUser={setCurrentUser} 
+            setErrors={setErrors} 
+            errors={errors}/>}/>
+          <Route path="dashboard" element={<Dashboard 
+            currentUser={currentUser} 
+            expenses={expenses}/>}/>
           <Route path="expenses" element={<AllExpenses 
             errors={errors} 
             setErrors={setErrors} 
             expenses={expenses} 
             setUpdatedExpenses={setUpdatedExpenses}/>}/>
-
           <Route path="prev" element={<PrevMonth />}/>
           <Route path="categories" element={<Categories 
             setErrors={setErrors}  
@@ -135,10 +135,11 @@ return (
             currentUser={currentUser}
             setErrors={setErrors} 
             errors={errors} 
-            handleDisplayForm={handleDisplayForm} />
-            } />
-            <Route path="signup" element={<SignupForm setErrors={setErrors} errors={errors}/>}/>
-            <Route path="*" element={<NotFound />}/>
+            handleDisplayForm={handleDisplayForm} />}/>
+          <Route path="signup" element={<SignupForm 
+            setErrors={setErrors} 
+            errors={errors}/>}/>
+          <Route path="*" element={<NotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>
