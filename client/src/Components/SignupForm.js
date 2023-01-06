@@ -2,10 +2,11 @@ import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Divider, Header, Image, Form, Input, Button, Container } from 'semantic-ui-react';
 import DoughLine from '../images/DoughLine.png';
+import { useNavigate } from 'react-router-dom';
 // import LoginForm from './LoginForm';
 
 function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, handleDisplayForm}) {
-
+    let navigate = useNavigate();
     const [newUser, setNewUser] = useState({
         username: "",
         name: "",
@@ -24,9 +25,10 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
         })
         .then(res => {
             if(res.ok){
-                res.json().then(setCurrentUser)
-                handleDisplayForm();
-                // navigate('dashboard');
+                res.json().then(data => {
+                   setCurrentUser(data);
+                   navigate('/dashboard')
+                }) 
             } else {
                 res.json().then(data => setErrors(data.errors))
             }
@@ -107,8 +109,9 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                             value={newUser.password_confirmation}
                             onChange={handleChange}
                         />
+                        
                         <Form.Button type="submit">Submit</Form.Button>
-
+                       
                         <Divider horizontal>Or</Divider>
 
                         JK I have an account!
