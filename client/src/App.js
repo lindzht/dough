@@ -48,10 +48,10 @@ function App() {
       }
     });
 
-    fetch("/expenses")
-    .then(r=>r.json())
-    .then(setExpenses)
-  }, [updatedExpenses]);
+    // fetch("/expenses")
+    // .then(r=>r.json())
+    // .then(setExpenses)
+  }, []);
 
     //LOGOUT: 
     const handleLogOut =()=> {

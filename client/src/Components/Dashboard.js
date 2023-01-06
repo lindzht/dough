@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {useState} from 'react'
 import { Icon, Divider, Container, Grid, Header, Segment, Table, Button } from "semantic-ui-react";
 
 
@@ -36,6 +37,43 @@ function Dashboard ({expenses, currentUser}){
     //         )
     //     }
     // }
+
+
+    const [editIncomeForm, setEditIncomeForm] = useState(false)
+    const [income, setIncome] = useState({income: ""})
+
+    function handleIncomeEdit (){
+        setEditIncomeForm(!editIncomeForm)
+    }
+
+    const handleChange = (e) => { 
+        const key = e.target.name;
+        const value = e.target.value;
+  
+        setIncome({
+            ...income, 
+            [key]: value
+        })
+      }
+
+    const handleEditIncome = (e) => {
+        e.preventDefault();
+        fetch(`/users/${currentUser.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(income),
+          })
+          .then(res => {
+            if(res.ok){
+                res.json().then(data => {console.log(data)} )
+            } 
+            else {
+                res.json().then(console.log("no good"))
+            }
+        })   
+      }
 
    
 
@@ -76,9 +114,26 @@ function Dashboard ({expenses, currentUser}){
                     </Grid.Column>
                     <Grid.Column textAlign="center" >                         
                         <Segment>
+                            <Button onClick={handleIncomeEdit} circular icon="pencil" floated="right"/>
                             <br/>
                             <u><Header position="middle" as='h2'>Monthly Income:</Header></u>
-                            <p className="dash-h1">${currentUser && currentUser.income}</p>               
+                            <p className="dash-h1">
+                                { editIncomeForm ? 
+
+                                        <form onSubmit={handleEditIncome}>
+                                            <input
+                                                id="income"
+                                                name="income"
+                                                value={income.income}
+                                                onChange={handleChange}
+                                            />
+                                            <input className="button" type="submit" />
+                                        </form>
+                                
+                                : `${currentUser && currentUser.income}`
+
+                                }
+                            </p>               
                         </Segment>                         
                         <Segment  >
                             <u><Header position="middle" as='h2'>Accumulated Expenses This Month:</Header></u>
