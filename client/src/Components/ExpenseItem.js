@@ -12,8 +12,6 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
         // category_name: {category.category_name}
     })
 
-    console.log(allExpenses)
-
     // TOGGLES IF EDIT BOTTON HAS BEEN CLICKED
     const displayEditInput = () => {
         setDisplayForms(!displayForms);
@@ -83,8 +81,7 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
                             <input
                                 id="item"
                                 name="item"
-                                placeholder="Update item"
-                                value={updatedExpense.item}
+                                value={item}
                                 onChange={handleChange}
                             />
                             <input className="button" type="submit" />

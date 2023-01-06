@@ -15,6 +15,7 @@ class ExpensesController < ApplicationController
         # byebug
         params[:user_id] = session[:user_id]
         expense = Expense.create!(expense_params)
+        expense.update(category_id: params[:category_id])
         render json: expense, status: :created
     end
 
@@ -35,7 +36,7 @@ class ExpensesController < ApplicationController
 
     def expense_params
         # need to add id bc it belongs to user and category
-        params.permit(:item, :cost, :date_of_expense, :category_id, :user_id)
+        params.permit(:item, :cost, :date_of_expense, :user_id)
     end
 
     def find_user
