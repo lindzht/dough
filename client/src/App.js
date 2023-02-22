@@ -132,7 +132,7 @@ return (
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
           {/* <Route path="savings" element={<Savings />}/> */}
-          <Route path="new" element={<NewExpenseForm setErrors={setErrors} categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
+          <Route path="new" element={<NewExpenseForm setErrors={setErrors} errors={errors} categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}

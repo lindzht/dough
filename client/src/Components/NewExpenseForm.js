@@ -43,7 +43,8 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
                     })
                 }) 
             } else {
-                res.json().then(data => setErrors(data.errors))
+                // res.json().then(data => setErrors(data.errors))
+                res.json().then(data => console.log(data))
             }
         })
     }
@@ -84,12 +85,15 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
                 </select>
                 <h4 onClick={()=> {navigate('/categories');}}>Don't see the category you want? Add a new one yo!</h4>
                 <div id="errors-container">
-                    {errors ? 
+                        {errors ? <p className="errors">{errors}</p> : null}
+                    </div>
+                {/* <div id="errors-container">
+                    {errors && errors? 
                     errors.map(e => {
                         return <p key={e} className="errors">• {e}</p>})
                     : null
                     }
-                </div>
+                </div> */}
                 <Button >Submit</Button>
                 
             </form>
