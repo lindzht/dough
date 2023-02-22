@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpense}){
+function NewExpenseForm ({setRender, setErrors, errors, categories, newExpense, setNewExpense}){
     let navigate = useNavigate();
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
@@ -35,6 +35,7 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
             if(res.ok){
                 res.json().then(data => {
                     setNewExpense(data);
+                    setRender(data);
                     navigate('/expenses')
                     setNewExpense({
                         item:"",
