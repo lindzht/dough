@@ -3,7 +3,7 @@ class Category < ApplicationRecord
     has_many :expenses, dependent: :destroy
     has_many :users, through: :expenses 
 
-    validates :category_name, presence: true
+    validates :category_name, presence: true, uniqueness: true
     validates :cat_type, presence: true
 
 

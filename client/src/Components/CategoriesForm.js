@@ -4,7 +4,7 @@ import { Button} from 'semantic-ui-react'
 
 function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
 
-    const handleSignup = (e, form) => {
+    const handleCatSubmit = (e) => {
         e.preventDefault();
         fetch("/categories", {
             method: "POST",
@@ -40,7 +40,7 @@ function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
     return(
 
         <div id="catform-container">
-                <form onSubmit={handleSignup}>
+                <form onSubmit={handleCatSubmit}>
                     <label>Name</label>
                     <input
                         label="Name:"
@@ -56,15 +56,16 @@ function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
                         <option value="Necessary">Necessary</option>
                         <option value="Savings">Savings</option>
                     </select>
-                    <br/>      
-                    <Button>Submit</Button>
+                    <br/> 
                     <div id="errors-container">
                         {errors ? 
                         errors.map(e => {
-                            return <p key={e}>{e}</p>})
+                            return <p key={e} className="errors">• {e}</p>})
                         : null
                         }
-                    </div>
+                    </div>     
+                    <Button>Submit</Button>
+                    
                 </form>
         </div>      
     )
