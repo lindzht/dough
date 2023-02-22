@@ -22,7 +22,10 @@ function CategoriesForm ({setErrors, errors, newCategory, setNewCategory}) {
                     })
                 }) 
             } else {
-                res.json().then(data => setErrors(data.errors))
+                res.json().then(data => {
+                    setErrors(data.errors)
+                    console.log(data)
+                })
             }
         })
     }
