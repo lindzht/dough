@@ -58,6 +58,7 @@ function App() {
           setCurrentUser(null)
       }
       })
+      setErrors([]);
   }
 
   //FETCH CATEGORIES FOR USER
@@ -91,6 +92,8 @@ function App() {
 
   const handleDisplayForm = ()=> {
     setDisplayForms(!displayForms)
+    setErrors([]);
+    console.log("are you working??")
 }
 
 

@@ -55,6 +55,10 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
         })
     }
 
+    const handleClearErrors = () => {
+        setErrors([]);
+    }
+
 
 
     return(
@@ -111,6 +115,11 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                             value={newUser.password_confirmation}
                             onChange={handleChange}
                         />
+                        <div id="errors-container">
+                            {errors && errors ? errors.map(e => {
+                                return <p key={e} className="errors">• {e}</p>
+                            }) : null}
+                        </div>
 
                         <Form.Button type="submit">Submit</Form.Button>
                        
@@ -122,11 +131,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                         <Link to="/login">
                             <Button onClick={handleFormDisplay}>Login</Button>
                         </Link>
-                        <div id="errors-container">
-                            {errors ? errors.map(e => {
-                                return <p key={e}>{e}</p>
-                            }) : null}
-                        </div>
+                        
                     </Form>
             </Container>
         </div>      

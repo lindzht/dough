@@ -10,8 +10,9 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
     const [displaySignup, setDisplaySignup] = useState(false);
 
     const handleSignupFormDisplay = () => {
-        setDisplaySignup(!displaySignup);
+        console.log("are you working")
         setErrors([]);
+        setDisplaySignup(!displaySignup);
     }
 
     const [user, setUser] = useState({
@@ -55,6 +56,10 @@ function LoginForm ({setErrors, errors, setCurrentUser, handleDisplayForm}) {
         })
     }
 
+    const handleClearErrors = () => {
+        setErrors([]);
+    }
+
 
 
 if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay} setErrors={setErrors} errors={errors} setCurrentUser={setCurrentUser} handleDisplayForm={handleDisplayForm} navigate={navigate}/>
@@ -87,6 +92,9 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                         onChange={handleChange}
                     />
                     <p id='login-p'>Username & Password Are Case Sensitive</p>
+                    <div id="errors-container">
+                        {errors ? <p className="errors">{errors}</p> : null}
+                    </div>
                     <Form.Button type="submit">Login</Form.Button> 
                     
                     <Divider horizontal>Or</Divider>
@@ -95,11 +103,9 @@ if (displaySignup) return <SignupForm handleFormDisplay={handleSignupFormDisplay
                     <br/>
                     <br/>
                     <Link to="/signup">
-                        <Button /*onClick={handleSignupFormDisplay}*/>Sign Up</Button>
+                        <Button onClick={handleClearErrors}>Sign Up</Button>
                     </Link>
-                    <div id="errors-container">
-                        {errors ? <p>{errors}</p> : null}
-                    </div>
+                    
                 </Form>
             </Container>
         </div>      
