@@ -42,7 +42,7 @@ function LandingPage ({currentUser, displayForms, handleDisplayForm, setCurrentU
             </div>
             <h1>SUP {currentUser? currentUser && currentUser.name : "STRANGER"}</h1>
             <Container>
-                <h4>Dough is a budgetting app that helps you keep track of your expenses month to month. We base our budget formula off of the 50/30/20 Model. Not familiar with the 50/30/20 Model, <a href="https://www.britannica.com/money/what-is-the-50-30-20-rule">well check this out!</a></h4>
+                <h4>Dough is a budgeting app that helps you keep track of your expenses month to month. We base our budget formula off of the 50/30/20 Model. Not familiar with the 50/30/20 Model, <a href="https://www.britannica.com/money/what-is-the-50-30-20-rule">well check this out!</a></h4>
 
                 <p>Proin lobortis enim ante, vitae vehicula elit vestibulum vel. Suspendisse eu magna sed lorem cursus sodales gravida vel justo. Aenean porta maximus ipsum, eu porta tortor maximus quis. Pellentesque eget luctus leo. Praesent erat neque, molestie non purus non, ultrices accumsan erat. Mauris convallis pellentesque elit, ut facilisis felis placerat et. Nulla sit amet mauris non massa tristique fermentum. Duis elementum vehicula erat, vitae fringilla lorem bibendum vel.</p>
                 <br/>
