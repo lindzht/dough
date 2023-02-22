@@ -88,7 +88,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                         />
                         <Form.Field 
                             control={Input}
-                            label="Income:"
+                            label="Monthly Income:"
                             type="number"
                             name="income"
                             placeholder='$'

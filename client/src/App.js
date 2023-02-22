@@ -85,7 +85,7 @@ function App() {
         })
       }
     })
-  }, [currentUser, newExpense, updatedExpenses]);
+  }, [currentUser, newExpense, updatedExpenses, updatedCategories]);
 
 
 
