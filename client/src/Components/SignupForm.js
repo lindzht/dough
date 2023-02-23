@@ -129,7 +129,7 @@ function SignupForm ({handleFormDisplay, setCurrentUser, setErrors, errors, hand
                         <br/>
                         <br/>
                         <Link to="/login">
-                            <Button onClick={handleFormDisplay}>Login</Button>
+                            <Button onClick={handleClearErrors}>Login</Button>
                         </Link>
                         
                     </Form>

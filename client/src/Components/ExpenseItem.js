@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useState} from 'react'
 
 
-function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, setUpdatedExpenses}) {
+function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, setUpdatedExpenses, setRender}) {
     const [displayForms, setDisplayForms] = useState(false);
     const [updatedExpense, setUpdatedExpense] = useState({
         item: item,
@@ -29,7 +29,10 @@ function ExpenseItem({id, item, cost, date_of_expense, category, allExpenses, se
         })
         .then(res => {
             if (res.ok){
-                res.json().then(data => {setUpdatedExpenses(data)})
+                res.json().then(data => {
+                    setUpdatedExpenses(data);
+                    setRender(data);
+                })
             } else {
                 res.json().then(console.log("no bueno"))
             }

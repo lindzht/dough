@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
     def create 
         user = find_user
-        cat = user.categories.create(category_params)
+        cat = user.categories.create!(category_params)
         # category = Category.create!(category_params)
         render json: cat, status: :created
     end

@@ -17,6 +17,8 @@ import Footer from './Components/Footer';
 
 function App() {
 
+  const [render, setRender] = useState([])
+
   const [errors, setErrors] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [displayForms, setDisplayForms ] = useState(false)
@@ -46,7 +48,7 @@ function App() {
         })
       }
     });
-  }, []);
+  }, [render]);
 
     //LOGOUT: 
     const handleLogOut =()=> {
@@ -117,7 +119,8 @@ return (
           <Route path="dashboard" element={<Dashboard 
             currentUser={currentUser} 
             expenses={expenses}/>}/>
-          <Route path="expenses" element={<AllExpenses 
+          <Route path="expenses" element={<AllExpenses
+            setRender={setRender} 
             errors={errors} 
             setErrors={setErrors} 
             expenses={expenses} 
@@ -131,8 +134,8 @@ return (
             allCategories={categories}
             setCategories={setCategories}
             setUpdatedCategories={setUpdatedCategories}/>}/>
-          <Route path="savings" element={<Savings />}/>
-          <Route path="new" element={<NewExpenseForm categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
+          {/* <Route path="savings" element={<Savings />}/> */}
+          <Route path="new" element={<NewExpenseForm setRender={setRender} setErrors={setErrors} errors={errors} categories={categories} newExpense={newExpense} setNewExpense={setNewExpense}/>}/>
           <Route path="login" element={<LoginForm 
             setCurrentUser={setCurrentUser} 
             currentUser={currentUser}

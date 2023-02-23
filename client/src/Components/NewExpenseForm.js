@@ -2,12 +2,12 @@ import {useEffect, useState} from 'react';
 import { Form, Input, Button, Container } from 'semantic-ui-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpense}){
+function NewExpenseForm ({setRender, setErrors, errors, categories, newExpense, setNewExpense}){
     let navigate = useNavigate();
     // maps through categories array to show in dropdown menu
     const handleCategories = categories.map(c => {
             return (
-                <option value={c.id}>
+                <option key={c.id} value={c.id}>
                     {c.category_name} 
                 </option>
             )
@@ -35,6 +35,7 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
             if(res.ok){
                 res.json().then(data => {
                     setNewExpense(data);
+                    setRender(data);
                     navigate('/expenses')
                     setNewExpense({
                         item:"",
@@ -43,7 +44,8 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
                     })
                 }) 
             } else {
-                res.json().then(console.log("no good"))
+                res.json().then(data => setErrors(data.errors))
+                // res.json().then(data => console.log(data))
             }
         })
     }
@@ -83,14 +85,16 @@ function NewExpenseForm ({setErrors, errors, categories, newExpense, setNewExpen
                     {handleCategories}
                 </select>
                 <h4 onClick={()=> {navigate('/categories');}}>Don't see the category you want? Add a new one yo!</h4>
-                <Button >Submit</Button>
+        
                 <div id="errors-container">
-                    {errors ? 
+                    {errors && errors? 
                     errors.map(e => {
-                        return <p key={e}>{e}</p>})
+                        return <p key={e} className="errors">• {e}</p>})
                     : null
                     }
                 </div>
+                <Button >Submit</Button>
+                
             </form>
         </div>
     )

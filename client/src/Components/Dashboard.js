@@ -114,7 +114,7 @@ function Dashboard ({expenses, currentUser}){
                     </Grid.Column>
                     <Grid.Column textAlign="center" >                         
                         <Segment>
-                            <Button onClick={handleIncomeEdit} circular icon="pencil" floated="right"/>
+                            {/* <Button onClick={handleIncomeEdit} circular icon="pencil" floated="right"/> */}
                             <br/>
                             <u><Header position="middle" as='h2'>Monthly Income:</Header></u>
                             <p className="dash-h1">
