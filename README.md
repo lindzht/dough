@@ -7,11 +7,11 @@ Dough is a budgeting app that helps you keep track of your expenses month to mon
 React and Ruby on Rails Single-Page Web Application designed by Aaron David, Keila Lopez and Lindsay Taylor.
 
 ## Features:
-• Create an account, log in/out, and update or delete account
-• Add, update and delete expenses and categories
-• Associate expenses with specific categories
-• Monitor current expenses compared to monthly income 
-• Quick view of recent expenses by way of the dashboard
+- Create an account, log in/out, and update or delete account
+- Add, update and delete expenses and categories
+- Associate expenses with specific categories
+- Monitor current expenses compared to monthly income 
+- Quick view of recent expenses by way of the dashboard
 
 ## Demo
 https://www.youtube.com/watch?v=vK7i5B4Q0hw 
