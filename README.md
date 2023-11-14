@@ -23,7 +23,7 @@ Front End
 - Client-side routing via React Router/BrowserRouter
 
 Back End
-- Ruby on Rails
+- Ruby on Rails Framework
 - Model-View-Controller Architectural Development Pattern
 - RESTful API utilizing Active Record and Active Model Serializers
 - User authentication and authorization
